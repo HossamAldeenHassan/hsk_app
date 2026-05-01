@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSK1 — الحرير الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════
+     CSS VARIABLES & RESET
+  ═══════════════════════════════════════ */
+  :root {
+    --red:       #c0392b;
+    --red-dark:  #96281b;
+    --red-light: #e74c3c;
+    --gold:      #d4a843;
+    --gold-light:#f0c060;
+    --bg:        #0e0e0f;
+    --bg2:       #161618;
+    --bg3:       #1e1e21;
+    --bg4:       #252529;
+    --border:    #2e2e33;
+    --text:      #e8e8ea;
+    --text2:     #9a9aa5;
+    --text3:     #5c5c68;
+    --correct:   #27ae60;
+    --wrong:     #e74c3c;
+    --radius:    12px;
+    --shadow:    0 4px 24px rgba(0,0,0,0.5);
+  }
+  .light-mode {
+    --bg:        #f5f0eb;
+    --bg2:       #ede8e0;
+    --bg3:       #e5dfd4;
+    --bg4:       #dcd4c6;
+    --border:    #ccc4b4;
+    --text:      #1a1a1e;
+    --text2:     #5a5260;
+    --text3:     #9a9098;
+    --shadow:    0 4px 24px rgba(0,0,0,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; }
+  body {
+    font-family: 'Noto Naskh Arabic', serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+  ═══════════════════════════════════════ */
+  .app-header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .app-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--red-light);
+  }
+  .app-logo span { font-size: 1.4rem; }
+  .header-actions { display: flex; gap: 8px; align-items: center; }
+
+  .main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* ═══════════════════════════════════════
+     BUTTONS
+  ═══════════════════════════════════════ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.18s;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--red); color: #fff; }
+  .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); }
+  .btn-secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { background: var(--bg4); }
+  .btn-gold { background: var(--gold); color: #1a1a1e; }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
+  .btn-ghost:hover { color: var(--text); background: var(--bg3); }
+  .btn-sm { padding: 6px 14px; font-size: 0.85rem; }
+  .btn-lg { padding: 14px 28px; font-size: 1.05rem; }
+  .btn-icon { padding: 8px; border-radius: 8px; background: var(--bg3); border: 1px solid var(--border); color: var(--text2); cursor: pointer; font-size: 1.1rem; transition: all 0.18s; }
+  .btn-icon:hover { color: var(--text); background: var(--bg4); }
+  .btn-correct { background: var(--correct) !important; color: #fff !important; }
+  .btn-wrong { background: var(--wrong) !important; color: #fff !important; }
+
+  /* ═══════════════════════════════════════
+     VIEWS
+  ═══════════════════════════════════════ */
+  .view { display: none; animation: fadeIn 0.3s; }
+  .view.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ═══════════════════════════════════════
+     HOME / SETUP
+  ═══════════════════════════════════════ */
+  .home-hero {
+    text-align: center;
+    padding: 32px 0 28px;
+  }
+  .home-hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--red-light);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .home-hero p { color: var(--text2); font-size: 1rem; }
+
+  .nav-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--bg2);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .nav-tab {
+    flex: 1;
+    padding: 9px 8px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .nav-tab.active { background: var(--red); color: #fff; }
+  .nav-tab:hover:not(.active) { background: var(--bg3); color: var(--text); }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 0.85rem;
+    color: var(--text2);
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .lesson-btn {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--bg3);
+    color: var(--text2);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .lesson-btn.selected { border-color: var(--red); background: rgba(192,57,43,0.2); color: var(--red-light); }
+  .lesson-btn:hover:not(.selected) { background: var(--bg4); color: var(--text); }
+
+  .select-all-row { display: flex; gap: 8px; margin-bottom: 10px; }
+
+  .type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .type-btn {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--bg3);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .type-btn.selected { border-color: var(--gold); background: rgba(212,168,67,0.15); }
+  .type-btn:hover:not(.selected) { background: var(--bg4); }
+  .type-icon { font-size: 1.2rem; }
+
+  .form-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 140px; }
+  .form-label { font-size: 0.85rem; color: var(--text2); font-weight: 600; }
+  .form-select, .form-input {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 9px 12px;
+    width: 100%;
+    direction: rtl;
+  }
+  .form-select:focus, .form-input:focus { outline: none; border-color: var(--red); }
+
+  .start-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+  }
+  .count-preview { color: var(--text2); font-size: 0.9rem; }
+  .count-preview strong { color: var(--gold); }
+
+  /* ═══════════════════════════════════════
+     FLASHCARD VIEW
+  ═══════════════════════════════════════ */
+  .session-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .session-title { font-size: 1rem; font-weight: 700; color: var(--text2); }
+  .progress-text { font-size: 0.9rem; color: var(--gold); font-weight: 700; }
+
+  .progress-bar-wrap {
+    height: 4px;
+    background: var(--bg3);
+    border-radius: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+
+  .flashcard-wrap {
+    perspective: 1000px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .flashcard {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.5s, box-shadow 0.2s;
+    position: relative;
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow);
+    user-select: none;
+  }
+  .flashcard:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.6); }
+  .flashcard.flipped { transform: rotateY(180deg); }
+  .card-face {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+  .card-back { transform: rotateY(180deg); }
+
+  .hanzi-big {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .pinyin-text {
+    font-size: 1rem;
+    color: var(--text2);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+  .arabic-big {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .speaker-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--red);
+    color: #fff;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .flip-hint {
+    position: absolute;
+    bottom: 14px;
+    color: var(--text3);
+    font-size: 0.8rem;
+  }
+  .card-type-badge {
+    font-size: 0.75rem;
+    background: var(--bg4);
+    color: var(--text3);
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-bottom: 12px;
+  }
+
+  .flashcard-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  /* ═══════════════════════════════════════
+     QUIZ VIEW
+  ═══════════════════════════════════════ */
+  .quiz-question-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .quiz-type-label {
+    font-size: 0.8rem;
+    color: var(--red-light);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .quiz-prompt-hanzi {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.8rem;
+    color: var(--text);
+  }
+  .quiz-prompt-arabic {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .quiz-prompt-pinyin {
+    font-size: 0.95rem;
+    color: var(--text2);
+  }
+
+  .quiz-input-wrap { display: flex; gap: 10px; margin-bottom: 16px; }
+  .quiz-input {
+    flex: 1;
+    background: var(--bg3);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Noto Serif SC', 'Noto Naskh Arabic', serif;
+    font-size: 1.1rem;
+    padding: 12px 16px;
+    text-align: center;
+    direction: auto;
+  }
+  .quiz-input:focus { outline: none; border-color: var(--red); }
+  .quiz-input.correct { border-color: var(--correct); background: rgba(39,174,96,0.12); }
+  .quiz-input.wrong { border-color: var(--wrong); background: rgba(231,76,60,0.12); }
+
+  .quiz-choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .quiz-choice {
+    padding: 14px 12px;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    background: var(--bg3);
+    color: var(--text);
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .quiz-choice:hover:not(:disabled) { background: var(--bg4); border-color: var(--red); }
+  .quiz-choice.correct-choice { border-color: var(--correct); background: rgba(39,174,96,0.2); }
+  .quiz-choice.wrong-choice { border-color: var(--wrong); background: rgba(231,76,60,0.15); }
+  .quiz-choice:disabled { cursor: default; }
+
+  .tf-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .tf-btn {
+    padding: 18px;
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    background: var(--bg3);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tf-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .tf-btn.correct-choice { border-color: var(--correct); background: rgba(39,174,96,0.2); color: var(--correct); }
+  .tf-btn.wrong-choice { border-color: var(--wrong); background: rgba(231,76,60,0.15); color: var(--wrong); }
+
+  .feedback-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .feedback-correct { background: rgba(39,174,96,0.15); border: 1px solid var(--correct); color: var(--correct); }
+  .feedback-wrong { background: rgba(231,76,60,0.12); border: 1px solid var(--wrong); color: var(--wrong); }
+  .feedback-icon { font-size: 1.3rem; }
+  .feedback-answer { font-family: 'Noto Serif SC', serif; }
+
+  .listen-btn-wrap { margin: 12px 0; }
+  .audio-warn { color: var(--gold); font-size: 0.85rem; margin-top: 6px; }
+
+  /* ═══════════════════════════════════════
+     RESULTS
+  ═══════════════════════════════════════ */
+  .results-hero {
+    text-align: center;
+    padding: 24px 0;
+  }
+  .results-score {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .results-label { color: var(--text2); font-size: 1rem; }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+  .results-stat {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .results-stat .num { font-size: 1.8rem; font-weight: 700; }
+  .results-stat .lbl { font-size: 0.8rem; color: var(--text2); margin-top: 2px; }
+  .correct-num { color: var(--correct); }
+  .wrong-num { color: var(--wrong); }
+
+  .mistakes-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .mistake-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .mistake-q { font-size: 0.8rem; color: var(--text2); margin-bottom: 4px; }
+  .mistake-hanzi { font-family: 'Noto Serif SC', serif; font-size: 1.4rem; margin-bottom: 4px; }
+  .mistake-line { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+  .mistake-user { color: var(--wrong); }
+  .mistake-correct { color: var(--correct); }
+  .results-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+
+  /* ═══════════════════════════════════════
+     STATS VIEW
+  ═══════════════════════════════════════ */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-card .icon { font-size: 1.5rem; }
+  .stat-card .val { font-size: 2rem; font-weight: 700; }
+  .stat-card .desc { color: var(--text2); font-size: 0.85rem; }
+  .weak-list { display: flex; flex-direction: column; gap: 8px; }
+  .weak-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .weak-hanzi { font-family: 'Noto Serif SC', serif; font-size: 1.3rem; }
+  .weak-arabic { font-size: 0.95rem; color: var(--text2); }
+  .weak-badge { background: var(--wrong); color: #fff; border-radius: 6px; padding: 2px 8px; font-size: 0.8rem; font-weight: 700; }
+  .reset-btn-wrap { margin-top: 20px; text-align: center; }
+
+  /* ═══════════════════════════════════════
+     MISC
+  ═══════════════════════════════════════ */
+  .divider { height: 1px; background: var(--border); margin: 16px 0; }
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--text3); font-size: 0.95rem; }
+  .loading { text-align: center; padding: 60px 20px; color: var(--text2); font-size: 1rem; }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--bg4);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    z-index: 9999;
+    transition: transform 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ═══════════════════════════════════════
+     SENTENCE BUILDING
+  ═══════════════════════════════════════ */
+  .build-area {
+    background: var(--bg3);
+    border: 2px dashed var(--border);
+    border-radius: 14px;
+    min-height: 64px;
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+  .build-area.has-items { border-color: var(--gold); border-style: solid; }
+  .build-placeholder { color: var(--text3); font-size: 0.9rem; margin: auto; }
+  .word-block {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--bg2);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.18s;
+    user-select: none;
+    direction: ltr important;
+    unicode-bidi: isolate imprtant;
+  }
+  .word-block:hover { border-color: var(--red-light); background: var(--bg4); transform: translateY(-2px); }
+  .word-block.in-answer { background: rgba(212,168,67,0.15); border-color: var(--gold); }
+  .word-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    min-height: 48px;
+  }
+  .build-actions { display: flex; gap: 10px; justify-content: center; margin-bottom: 8px; }
+
+  /* ═══════════════════════════════════════
+     CLOZE
+  ═══════════════════════════════════════ */
+  .cloze-sentence {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 8px;
+    direction: ltr;
+    text-align: center;
+  }
+  .cloze-blank {
+    display: inline-block;
+    min-width: 60px;
+    border-bottom: 3px solid var(--gold);
+    color: var(--gold);
+    font-weight: 700;
+    padding: 0 4px;
+  }
+
+  /* ═══════════════════════════════════════
+     REVIEW FILTERS
+  ═══════════════════════════════════════ */
+  .review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .review-btn {
+    padding: 12px 10px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--bg3);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .review-btn:hover { background: var(--bg4); border-color: var(--red); }
+  .review-btn .r-icon { font-size: 1.3rem; }
+  .review-btn .r-count { font-size: 0.75rem; color: var(--gold); font-weight: 700; }
+
+  /* ═══════════════════════════════════════
+     LESSON COMPLETION
+  ═══════════════════════════════════════ */
+  .lesson-progress-list { display: flex; flex-direction: column; gap: 8px; }
+  .lesson-progress-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lesson-progress-label { min-width: 80px; font-size: 0.88rem; color: var(--text2); font-weight: 600; }
+  .lesson-progress-bar-wrap {
+    flex: 1;
+    height: 8px;
+    background: var(--bg4);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .lesson-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    border-radius: 4px;
+    transition: width 0.4s;
+  }
+  .lesson-progress-pct { min-width: 36px; font-size: 0.82rem; color: var(--gold); font-weight: 700; text-align: left; }
+
+  @media (max-width: 480px) {
+    .lesson-grid { grid-template-columns: repeat(5, 1fr); }
+    .type-grid { grid-template-columns: 1fr 1fr; }
+    .results-grid { grid-template-columns: repeat(3, 1fr); }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .hanzi-big { font-size: 2.8rem; }
+    .quiz-prompt-hanzi { font-size: 2.2rem; }
+    .flashcard-actions { grid-template-columns: 1fr 1fr; }
+    .flashcard-actions .btn:last-child { grid-column: 1 / -1; }
+    .review-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <div class="app-logo">
+    <span>🎋</span>
+    الحرير الأحمر — HSK1
+  </div>
+  <div class="header-actions">
+    <button class="btn-icon" id="statsBtn" title="الإحصائيات">📊</button>
+    <button class="btn-icon" id="darkToggle" title="تبديل الوضع">🌙</button>
+  </div>
+</header>
+
+<div class="main-content">
+
+  <!-- ═══════════════ HOME VIEW ═══════════════ -->
+  <div class="view active" id="homeView">
+    <div class="home-hero">
+      <h1>تعلّم الصينية بالعربية</h1>
+      <p>HSK1 — مفردات، جمل، حوارات</p>
+    </div>
+
+    <div class="nav-tabs" id="modeTabsBar">
+      <button class="nav-tab active" data-mode="flashcard">🃏 البطاقات</button>
+      <button class="nav-tab" data-mode="quiz_ar_zh">✍️ عربي→صيني</button>
+      <button class="nav-tab" data-mode="quiz_zh_ar">✍️ صيني→عربي</button>
+      <button class="nav-tab" data-mode="quiz_tf">✅ صح/خطأ</button>
+      <button class="nav-tab" data-mode="quiz_listen">🎧 استماع</button>
+      <button class="nav-tab" data-mode="quiz_build">🧩 ترتيب</button>
+      <button class="nav-tab" data-mode="quiz_cloze">🔲 فراغ</button>
+    </div>
+
+    <!-- Lesson Selection -->
+    <div class="card">
+      <div class="card-title">اختر الدروس</div>
+      <div class="select-all-row">
+        <button class="btn btn-secondary btn-sm" id="selectAllLessons">الكل</button>
+        <button class="btn btn-ghost btn-sm" id="clearAllLessons">إلغاء</button>
+      </div>
+      <div class="lesson-grid" id="lessonGrid"></div>
+    </div>
+
+    <!-- Content Type -->
+    <div class="card">
+      <div class="card-title">نوع المحتوى</div>
+      <div class="type-grid" id="typeGrid">
+        <button class="type-btn selected" data-type="word"><span class="type-icon">📝</span> مفردات</button>
+        <button class="type-btn selected" data-type="sentence"><span class="type-icon">📖</span> جمل</button>
+        <button class="type-btn selected" data-type="dialogue"><span class="type-icon">💬</span> حوارات</button>
+        <button class="type-btn selected" data-type="mixed"><span class="type-icon">🎲</span> مزيج</button>
+      </div>
+    </div>
+
+    <!-- Options -->
+    <div class="card">
+      <div class="card-title">خيارات الجلسة</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">عدد البطاقات</label>
+          <select class="form-select" id="countSelect">
+            <option value="all">الكل</option>
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">الترتيب</label>
+          <select class="form-select" id="orderSelect">
+            <option value="random" selected>عشوائي</option>
+            <option value="sequential">تسلسلي</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-bar">
+      <span class="count-preview">البطاقات المتاحة: <strong id="availableCount">0</strong></span>
+      <button class="btn btn-primary btn-lg" id="startBtn">ابدأ الجلسة ←</button>
+    </div>
+
+    <!-- Review Filters -->
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">المراجعة السريعة</div>
+      <div class="review-grid" id="reviewGrid">
+        <button class="review-btn" onclick="startReview('today')">
+          <span class="r-icon">📅</span>
+          مراجعة اليوم
+          <span class="r-count" id="reviewCountToday">0</span>
+        </button>
+        <button class="review-btn" onclick="startReview('wrong')">
+          <span class="r-icon">❌</span>
+          الأخطاء فقط
+          <span class="r-count" id="reviewCountWrong">0</span>
+        </button>
+        <button class="review-btn" onclick="startReview('difficult')">
+          <span class="r-icon">😰</span>
+          الصعب فقط
+          <span class="r-count" id="reviewCountDifficult">0</span>
+        </button>
+        <button class="review-btn" onclick="startReview('mixed')">
+          <span class="r-icon">🔀</span>
+          مراجعة مختلطة
+          <span class="r-count" id="reviewCountMixed">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Lesson Completion -->
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">تقدم الدروس</div>
+      <div class="lesson-progress-list" id="lessonProgressList"></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════ FLASHCARD VIEW ═══════════════ -->
+  <div class="view" id="flashcardView">
+    <div class="session-header">
+      <span class="session-title">وضع البطاقات</span>
+      <span class="progress-text" id="fcProgress">0 / 0</span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="fcProgressBar" style="width:0%"></div></div>
+
+    <div class="flashcard-wrap" id="flashcardWrap" onclick="flipCard()">
+      <div class="flashcard" id="flashcard">
+        <div class="card-face card-front" id="cardFront"></div>
+        <div class="card-face card-back" id="cardBack"></div>
+      </div>
+    </div>
+
+    <div class="flashcard-actions">
+      <button class="btn btn-ghost" onclick="markCard('difficult')">😰 صعب</button>
+      <button class="btn btn-primary" onclick="nextCard()">التالي ←</button>
+      <button class="btn btn-secondary" onclick="markCard('known')">✅ أعرفه</button>
+    </div>
+
+    <div style="text-align:center; margin-top:14px;">
+      <button class="btn btn-ghost btn-sm" onclick="endSession()">إنهاء الجلسة</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ QUIZ VIEW ═══════════════ -->
+  <div class="view" id="quizView">
+    <div class="session-header">
+      <span class="session-title" id="quizModeLabel">اختبار</span>
+      <span class="progress-text" id="quizProgress">0 / 0</span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="quizProgressBar" style="width:0%"></div></div>
+
+    <div class="quiz-question-card" id="quizQuestionCard"></div>
+
+    <!-- Type answer -->
+    <div id="typeAnswerWrap" style="display:none">
+      <div class="quiz-input-wrap">
+        <input class="quiz-input" id="quizInput" type="text" placeholder="اكتب الإجابة هنا" autocomplete="off" autocorrect="off">
+        <button class="btn btn-primary" onclick="submitTypeAnswer()">تحقق</button>
+      </div>
+    </div>
+
+    <!-- Multiple choice -->
+    <div id="mcWrap" style="display:none">
+      <div class="quiz-choices" id="quizChoices"></div>
+    </div>
+
+    <!-- True/False -->
+    <div id="tfWrap" style="display:none">
+      <div class="tf-choices">
+        <button class="tf-btn" onclick="submitTF(true)">✓ صحيح</button>
+        <button class="tf-btn" onclick="submitTF(false)">✗ خطأ</button>
+      </div>
+    </div>
+
+    <!-- Sentence Building -->
+    <div id="buildWrap" style="display:none">
+      <div class="build-area" id="buildAnswer"></div>
+      <div class="word-pool" id="buildPool"></div>
+      <div class="build-actions">
+        <button class="btn btn-ghost" onclick="resetBuild()">↺ إعادة ضبط</button>
+        <button class="btn btn-primary" onclick="submitBuild()">إرسال ✓</button>
+      </div>
+    </div>
+
+    <!-- Cloze -->
+    <div id="clozeWrap" style="display:none">
+      <div class="quiz-choices" id="clozeChoices"></div>
+    </div>
+
+    <!-- Feedback -->
+    <div id="feedbackWrap" style="display:none"></div>
+
+    <!-- Next button -->
+    <div style="text-align:center; margin-top:8px;">
+      <button class="btn btn-primary btn-lg" id="nextQuizBtn" style="display:none" onclick="nextQuiz()">التالي ←</button>
+    </div>
+
+    <div style="text-align:center; margin-top:12px;">
+      <button class="btn btn-ghost btn-sm" onclick="endSession()">إنهاء الجلسة</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ RESULTS VIEW ═══════════════ -->
+  <div class="view" id="resultsView">
+    <div class="results-hero">
+      <div class="results-score" id="resultsScore">0%</div>
+      <div class="results-label">نتيجة الجلسة</div>
+    </div>
+
+    <div class="results-grid">
+      <div class="results-stat">
+        <div class="num" id="totalQ">0</div>
+        <div class="lbl">إجمالي</div>
+      </div>
+      <div class="results-stat">
+        <div class="num correct-num" id="correctQ">0</div>
+        <div class="lbl">صحيح</div>
+      </div>
+      <div class="results-stat">
+        <div class="num wrong-num" id="wrongQ">0</div>
+        <div class="lbl">خطأ</div>
+      </div>
+    </div>
+
+    <div id="mistakesSection" style="display:none">
+      <div class="card-title" style="margin-bottom:10px;">الأخطاء</div>
+      <div class="mistakes-list" id="mistakesList"></div>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn btn-primary btn-lg" onclick="retryMistakes()">إعادة الأخطاء</button>
+      <button class="btn btn-secondary btn-lg" onclick="showHome()">جلسة جديدة</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ STATS VIEW ═══════════════ -->
+  <div class="view" id="statsView">
+    <div class="session-header" style="margin-bottom:16px">
+      <span class="session-title" style="font-size:1.1rem; color:var(--text)">📊 الإحصائيات</span>
+      <button class="btn btn-ghost btn-sm" onclick="showHome()">← رجوع</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="icon">📚</div><div class="val" id="statStudied">0</div><div class="desc">عناصر مدروسة</div></div>
+      <div class="stat-card"><div class="icon">🎯</div><div class="val" id="statAccuracy">0%</div><div class="desc">دقة الإجابات</div></div>
+      <div class="stat-card"><div class="icon">✅</div><div class="val" id="statKnown">0</div><div class="desc">معروف</div></div>
+      <div class="stat-card"><div class="icon">😰</div><div class="val" id="statDifficult">0</div><div class="desc">صعب</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">العناصر الضعيفة (أكثر من <span id="thresholdLabel">2</span> خطأ)</div>
+      <div style="margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+        <label class="form-label">الحد الأدنى للأخطاء:</label>
+        <input type="number" class="form-input" id="weakThreshold" value="2" min="1" max="20" style="width:70px" oninput="renderStats()">
+      </div>
+      <div class="weak-list" id="weakList"></div>
+    </div>
+
+    <div class="reset-btn-wrap">
+      <button class="btn btn-ghost btn-sm" onclick="confirmReset()">🗑 إعادة تعيين التقدم</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA & STATE
+// ═══════════════════════════════════════════════════════
+let allVocab = [], allSentences = [], allDialogues = [];
+let session = {
+  items: [],
+  index: 0,
+  mode: 'flashcard',
+  mistakes: [],
+  correct: 0,
+  wrong: 0,
+  flipped: false,
+  answered: false,
+  tfCorrectAnswer: null,
+};
+let selectedLessons = new Set([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+let selectedTypes = new Set(['word','sentence','dialogue']);
+let currentMode = 'flashcard';
+const LESSONS = Array.from({length:15}, (_,i) => i+1);
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+async function init() {
+  loadTheme();
+  buildLessonGrid();
+  buildTypeGrid();
+  attachTabListeners();
+  document.getElementById('selectAllLessons').onclick = () => { LESSONS.forEach(l => selectedLessons.add(l)); renderLessons(); updateCount(); };
+  document.getElementById('clearAllLessons').onclick = () => { selectedLessons.clear(); renderLessons(); updateCount(); };
+  document.getElementById('startBtn').onclick = startSession;
+  document.getElementById('darkToggle').onclick = toggleTheme;
+  document.getElementById('statsBtn').onclick = showStats;
+  document.getElementById('countSelect').onchange = updateCount;
+  document.getElementById('typeGrid').onclick = (e) => {
+    const btn = e.target.closest('.type-btn');
+    if (!btn) return;
+    const t = btn.dataset.type;
+    if (t === 'mixed') {
+      selectedTypes = new Set(['word','sentence','dialogue']);
+      document.querySelectorAll('.type-btn').forEach(b => b.classList.add('selected'));
+    } else {
+      btn.classList.toggle('selected');
+      if (btn.classList.contains('selected')) selectedTypes.add(t);
+      else selectedTypes.delete(t);
+      document.querySelector('.type-btn[data-type="mixed"]').classList.remove('selected');
+    }
+    updateCount();
+  };
+  document.getElementById('quizInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !session.answered) submitTypeAnswer();
+    else if (e.key === 'Enter' && session.answered) nextQuiz();
+  });
+
+  try {
+    const [v, s, d] = await Promise.all([
+      fetch('/data/vocab.json').then(r => r.json()),
+      fetch('/data/sentences.json').then(r => r.json()),
+      fetch('/data/dialogues.json').then(r => r.json()),
+    ]);
+    allVocab = v;
+    allSentences = s;
+    allDialogues = d;
+    console.log(`Loaded: ${v.length} vocab, ${s.length} sentences, ${d.length} dialogue lines`);
+  } catch(e) {
+    console.error('Data load failed:', e);
+  }
+  updateCount();
+  updateReviewCounts();
+  renderLessonProgress();
+}
+
+// ═══════════════════════════════════════════════════════
+// UI BUILDERS
+// ═══════════════════════════════════════════════════════
+function buildLessonGrid() {
+  const grid = document.getElementById('lessonGrid');
+  grid.innerHTML = LESSONS.map(l =>
+    `<button class="lesson-btn selected" data-lesson="${l}" onclick="toggleLesson(${l})">${l}</button>`
+  ).join('');
+}
+function renderLessons() {
+  document.querySelectorAll('.lesson-btn').forEach(b => {
+    const l = +b.dataset.lesson;
+    b.classList.toggle('selected', selectedLessons.has(l));
+  });
+}
+function toggleLesson(l) {
+  if (selectedLessons.has(l)) selectedLessons.delete(l);
+  else selectedLessons.add(l);
+  renderLessons();
+  updateCount();
+}
+function buildTypeGrid() {}
+
+function attachTabListeners() {
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.onclick = () => {
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentMode = tab.dataset.mode;
+      updateCount();
+    };
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// FILTERING
+// ═══════════════════════════════════════════════════════
+function getFilteredItems() {
+  let types = selectedTypes;
+  // If "mixed" effectively: use all 3 types
+  if (types.size === 3 || [...types].includes('mixed')) types = new Set(['word','sentence','dialogue']);
+
+  let items = [];
+  if (types.has('word')) items.push(...allVocab.filter(x => selectedLessons.has(x.lesson)));
+  if (types.has('sentence')) items.push(...allSentences.filter(x => selectedLessons.has(x.lesson)));
+  if (types.has('dialogue')) items.push(...allDialogues.filter(x => selectedLessons.has(x.lesson)));
+  return items;
+}
+
+function updateCount() {
+  const items = getFilteredItems();
+  document.getElementById('availableCount').textContent = items.length;
+}
+
+// ═══════════════════════════════════════════════════════
+// SESSION GENERATION
+// ═══════════════════════════════════════════════════════
+function startSession(retryItems) {
+  let items = Array.isArray(retryItems) ? retryItems : getFilteredItems();
+  if (!items.length) { showToast('لا توجد بطاقات مطابقة!'); return; }
+
+  const order = document.getElementById('orderSelect')?.value || 'random';
+  const countVal = document.getElementById('countSelect')?.value || 'all';
+
+  if (order === 'random') items = shuffle(items);
+  if (countVal !== 'all') items = items.slice(0, +countVal);
+
+  session = {
+    items,
+    index: 0,
+    mode: currentMode,
+    mistakes: [],
+    correct: 0,
+    wrong: 0,
+    flipped: false,
+    answered: false,
+    tfCorrectAnswer: null,
+  };
+
+  if (currentMode === 'flashcard') startFlashcards();
+  else startQuiz();
+}
+
+function retryMistakes() {
+  if (!session.mistakes.length) { showHome(); return; }
+  const retryItems = session.mistakes.map(m => m.item);
+  currentMode = session.mode;
+  startSession(retryItems);
+}
+
+// ═══════════════════════════════════════════════════════
+// FLASHCARD MODE
+// ═══════════════════════════════════════════════════════
+function startFlashcards() {
+  showView('flashcardView');
+  renderFlashcard();
+}
+
+function renderFlashcard() {
+  const item = session.items[session.index];
+  const total = session.items.length;
+  document.getElementById('fcProgress').textContent = `${session.index + 1} / ${total}`;
+  document.getElementById('fcProgressBar').style.width = `${((session.index + 1) / total) * 100}%`;
+
+  const front = document.getElementById('cardFront');
+  const back = document.getElementById('cardBack');
+  const fc = document.getElementById('flashcard');
+  fc.classList.remove('flipped');
+  session.flipped = false;
+
+  // Front: Hanzi
+  let speakerTag = '';
+  if (item.type === 'dialogue') {
+    speakerTag = `<div class="speaker-tag">${item.speaker}</div>`;
+  }
+  let badge = item.type === 'word' ? '📝 مفردة' : item.type === 'sentence' ? '📖 جملة' : '💬 حوار';
+  front.innerHTML = `
+    ${speakerTag}
+    <div class="card-type-badge">${badge}</div>
+    <div class="hanzi-big">${item.hanzi}</div>
+    <div class="flip-hint">اضغط لرؤية المعنى</div>
+  `;
+
+  // Back: Arabic + Pinyin
+  back.innerHTML = `
+    ${speakerTag}
+    <div class="card-type-badge">${badge}</div>
+    <div class="arabic-big">${item.arabic}</div>
+    <div class="pinyin-text">${item.pinyin}</div>
+  `;
+
+  // Save progress
+  saveProgress(item, { studied: true });
+}
+
+function flipCard() {
+  const fc = document.getElementById('flashcard');
+  session.flipped = !session.flipped;
+  fc.classList.toggle('flipped', session.flipped);
+}
+
+function markCard(flag) {
+  const item = session.items[session.index];
+  saveProgress(item, { [flag]: true });
+  showToast(flag === 'known' ? '✅ تم حفظه' : '😰 مضاف للصعب');
+  nextCard();
+}
+
+function nextCard() {
+  session.index++;
+  if (session.index >= session.items.length) { endSession(); return; }
+  renderFlashcard();
+}
+
+// ═══════════════════════════════════════════════════════
+// QUIZ MODES
+// ═══════════════════════════════════════════════════════
+function startQuiz() {
+  showView('quizView');
+  const labels = {
+    quiz_ar_zh: '✍️ عربي ← صيني',
+    quiz_zh_ar: '✍️ صيني ← عربي',
+    quiz_tf: '✅ صح / خطأ',
+    quiz_listen: '🎧 استماع',
+    quiz_build: '🧩 ترتيب الكلمات',
+    quiz_cloze: '🔲 أكمل الفراغ',
+  };
+  document.getElementById('quizModeLabel').textContent = labels[session.mode] || 'اختبار';
+  renderQuiz();
+}
+
+function renderQuiz() {
+  session.answered = false;
+  const total = session.items.length;
+  const i = session.index;
+  document.getElementById('quizProgress').textContent = `${i + 1} / ${total}`;
+  document.getElementById('quizProgressBar').style.width = `${((i + 1) / total) * 100}%`;
+
+  // hide all answer widgets
+  ['typeAnswerWrap','mcWrap','tfWrap','buildWrap','clozeWrap'].forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById('feedbackWrap').style.display = 'none';
+  document.getElementById('nextQuizBtn').style.display = 'none';
+
+  const item = session.items[i];
+  const qCard = document.getElementById('quizQuestionCard');
+
+  if (session.mode === 'quiz_ar_zh') {
+    qCard.innerHTML = `<div class="quiz-type-label">اكتب الصينية</div><div class="quiz-prompt-arabic">${item.arabic}</div>`;
+    document.getElementById('typeAnswerWrap').style.display = '';
+    const inp = document.getElementById('quizInput');
+    inp.value = ''; inp.className = 'quiz-input'; inp.disabled = false;
+    inp.placeholder = 'اكتب الصينية هنا';
+    inp.focus();
+  }
+  else if (session.mode === 'quiz_zh_ar') {
+    qCard.innerHTML = `<div class="quiz-type-label">اكتب العربية</div><div class="quiz-prompt-hanzi">${item.hanzi}</div><div class="quiz-prompt-pinyin">${item.pinyin}</div>`;
+    document.getElementById('typeAnswerWrap').style.display = '';
+    const inp = document.getElementById('quizInput');
+    inp.value = ''; inp.className = 'quiz-input'; inp.disabled = false;
+    inp.placeholder = 'اكتب المعنى بالعربية';
+    inp.focus();
+  }
+  else if (session.mode === 'quiz_tf') {
+    renderTF(item, qCard);
+  }
+  else if (session.mode === 'quiz_listen') {
+    renderListen(item, qCard);
+  }
+  else if (session.mode === 'quiz_build') {
+    renderBuild(item, qCard);
+  }
+  else if (session.mode === 'quiz_cloze') {
+    renderCloze(item, qCard);
+  }
+}
+
+function submitTypeAnswer() {
+  const item = session.items[session.index];
+  const inp = document.getElementById('quizInput');
+  const userRaw = inp.value.trim();
+  if (!userRaw) return;
+
+  let correct;
+  if (session.mode === 'quiz_ar_zh') {
+    correct = normChinese(userRaw) === normChinese(item.hanzi);
+  } else {
+    correct = normArabic(userRaw) === normArabic(item.arabic);
+  }
+
+  inp.disabled = true;
+  inp.className = 'quiz-input ' + (correct ? 'correct' : 'wrong');
+  showFeedback(correct, item, userRaw);
+  recordAnswer(correct, item, userRaw);
+}
+
+function renderTF(item, qCard) {
+  // Randomly decide if the pair is correct or swapped
+  const isCorrect = Math.random() > 0.45;
+  let displayArabic = item.arabic;
+  if (!isCorrect) {
+    // Pick a random different item for distractor
+    const pool = allVocab.concat(allSentences).filter(x => x.id !== item.id);
+    const rand = pool[Math.floor(Math.random() * pool.length)];
+    displayArabic = rand ? rand.arabic : item.arabic + ' (محرف)';
+  }
+  session.tfCorrectAnswer = isCorrect;
+
+  qCard.innerHTML = `
+    <div class="quiz-type-label">هل هذا صحيح؟</div>
+    <div class="quiz-prompt-hanzi">${item.hanzi}</div>
+    <div class="quiz-prompt-arabic">${displayArabic}</div>
+  `;
+  document.getElementById('tfWrap').style.display = '';
+  document.querySelectorAll('.tf-btn').forEach(b => { b.disabled = false; b.className = 'tf-btn'; });
+}
+
+function submitTF(userAnswer) {
+  const item = session.items[session.index];
+  const correct = userAnswer === session.tfCorrectAnswer;
+  document.querySelectorAll('.tf-btn').forEach(b => {
+    b.disabled = true;
+    const btnVal = b.textContent.includes('صحيح');
+    if (btnVal === session.tfCorrectAnswer) b.classList.add('correct-choice');
+    if (btnVal === userAnswer && !correct) b.classList.add('wrong-choice');
+  });
+  showFeedback(correct, item, userAnswer ? 'صحيح' : 'خطأ');
+  recordAnswer(correct, item, userAnswer ? 'صحيح' : 'خطأ');
+}
+
+function renderListen(item, qCard) {
+  const supported = 'speechSynthesis' in window;
+  let warnHtml = '';
+  if (!supported) warnHtml = `<div class="audio-warn">⚠️ متصفحك لا يدعم التحويل الصوتي — اقرأ البينيين</div>`;
+
+  qCard.innerHTML = `
+    <div class="quiz-type-label">استمع واختر المعنى</div>
+    <div class="listen-btn-wrap">
+      <button class="btn btn-secondary" onclick="speakItem()" id="speakBtn">🔊 استمع مجدداً</button>
+    </div>
+    <div class="quiz-prompt-pinyin" id="listenPinyin" style="display:none">${item.pinyin}</div>
+    ${warnHtml}
+  `;
+  if (!supported) {
+    document.getElementById('listenPinyin').style.display = '';
+  } else {
+    speak(item.hanzi);
+  }
+
+  // Build 4 choices: 1 correct + 3 distractors
+  const pool = allVocab.concat(allSentences).filter(x => normArabic(x.arabic) !== normArabic(item.arabic));
+  const distractors = shuffle(pool).slice(0,3).map(x => x.arabic);
+  const choices = shuffle([item.arabic, ...distractors]);
+
+  const mc = document.getElementById('mcWrap');
+  mc.style.display = '';
+  const choicesDiv = document.getElementById('quizChoices');
+  choicesDiv.innerHTML = choices.map(c =>
+    `<button class="quiz-choice" onclick="submitMC(this, '${escapeAttr(c)}', '${escapeAttr(item.arabic)}')">${c}</button>`
+  ).join('');
+}
+
+function submitMC(btn, chosen, correct) {
+  const item = session.items[session.index];
+  const isCorrect = normArabic(chosen) === normArabic(correct);
+  document.querySelectorAll('.quiz-choice').forEach(b => {
+    b.disabled = true;
+    if (normArabic(b.textContent) === normArabic(correct)) b.classList.add('correct-choice');
+  });
+  if (!isCorrect) btn.classList.add('wrong-choice');
+  showFeedback(isCorrect, item, chosen);
+  recordAnswer(isCorrect, item, chosen);
+}
+
+function speakItem() {
+  const item = session.items[session.index];
+  speak(item.hanzi);
+}
+
+function speak(text) {
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'zh-CN';
+  utt.rate = 0.85;
+  // Try to find zh-CN voice
+  const voices = window.speechSynthesis.getVoices();
+  const zhVoice = voices.find(v => v.lang.startsWith('zh'));
+  if (zhVoice) utt.voice = zhVoice;
+  window.speechSynthesis.speak(utt);
+}
+
+// Ensure voices are loaded
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => {};
+}
+
+function showFeedback(correct, item, userAnswer) {
+  session.answered = true;
+  const wrap = document.getElementById('feedbackWrap');
+  const isChinese = session.mode === 'quiz_ar_zh' || session.mode === 'quiz_build' || session.mode === 'quiz_cloze';
+  const correctLabel = isChinese ? item.hanzi : item.arabic;
+  const correctPinyin = item.pinyin || '';
+  wrap.style.display = '';
+  wrap.innerHTML = correct
+    ? `<div class="feedback-row feedback-correct"><span class="feedback-icon">✅</span> <span>إجابة صحيحة!</span></div>`
+    : `<div class="feedback-row feedback-wrong">
+        <span class="feedback-icon">❌</span>
+        <div>
+          <div>إجابة خاطئة</div>
+          <div class="mistake-line" style="margin-top:4px">
+            <span style="color:var(--text2); font-size:0.85rem">إجابتك:</span>
+            <span class="mistake-user feedback-answer">${userAnswer}</span>
+          </div>
+          <div class="mistake-line" style="margin-top:2px">
+            <span style="color:var(--text2); font-size:0.85rem">الصواب:</span>
+            <span class="mistake-correct feedback-answer">${correctLabel}</span>
+            ${correctPinyin && session.mode !== 'quiz_zh_ar' ? `<span style="color:var(--text2); font-size:0.85rem">${correctPinyin}</span>` : ''}
+          </div>
+        </div>
+      </div>`;
+  document.getElementById('nextQuizBtn').style.display = '';
+}
+
+function recordAnswer(correct, item, userAnswer) {
+  if (correct) {
+    session.correct++;
+    const p = getProgress(item) || {};
+    saveProgress(item, { ...p, studied: true, wrong_count: p.wrong_count || 0 });
+  } else {
+    session.wrong++;
+    const p = getProgress(item) || {};
+    const wc = (p.wrong_count || 0) + 1;
+    saveProgress(item, { ...p, studied: true, wrong_count: wc });
+    session.mistakes.push({ item, userAnswer, correctAnswer: (session.mode === 'quiz_ar_zh' || session.mode === 'quiz_build') ? item.hanzi : item.arabic });
+  }
+}
+
+function nextQuiz() {
+  session.index++;
+  if (session.index >= session.items.length) { endSession(); return; }
+  renderQuiz();
+}
+
+// ═══════════════════════════════════════════════════════
+// SENTENCE BUILDING MODE
+// ═══════════════════════════════════════════════════════
+let buildState = { words: [], answer: [], original: '' };
+
+function segmentHanzi(hanzi, vocabList) {
+  // Build lookup set sorted longest-first for greedy match
+  const known = new Set(vocabList.map(v => v.hanzi));
+  // Strip punctuation for segmentation, keep original for display
+  const clean = hanzi.replace(/[。，！？、；：""''【】（）《》\s]/g, '');
+  const result = [];
+  let i = 0;
+  const maxLen = 4;
+  while (i < clean.length) {
+    let matched = false;
+    for (let len = Math.min(maxLen, clean.length - i); len >= 1; len--) {
+      const seg = clean.slice(i, i + len);
+      if (len === 1 || known.has(seg)) {
+        result.push(seg);
+        i += len;
+        matched = true;
+        break;
+      }
+    }
+    if (!matched) {
+      result.push(clean[i]);
+      i++;
+    }
+  }
+  if (result.length < 2) {
+    console.warn('[segmentHanzi] Could not meaningfully segment:', hanzi);
+    return null;
+  }
+  return result;
+}
+
+function renderBuild(item, qCard) {
+  const words = item.words || segmentHanzi(item.hanzi, allVocab);
+  if (!words || words.length < 2) {
+    console.warn('[quiz_build] Skipping unsegmentable item:', item.hanzi);
+    session.index++;
+    if (session.index >= session.items.length) { endSession(); return; }
+    renderQuiz();
+    return;
+  }
+  buildState = { words: shuffle([...words]), answer: [], original: words };
+
+  qCard.innerHTML = `
+    <div class="quiz-type-label">ترتيب الكلمات</div>
+    <div class="quiz-prompt-arabic">${item.arabic}</div>
+    <div class="quiz-prompt-pinyin">${item.pinyin}</div>
+  `;
+
+  document.getElementById('buildWrap').style.display = '';
+  renderBuildUI();
+}
+
+function renderBuildUI() {
+  const pool = document.getElementById('buildPool');
+  const answer = document.getElementById('buildAnswer');
+
+  pool.innerHTML = buildState.words.map((w, i) =>
+    w !== null
+      ? `<button class="word-block" onclick="buildPickWord(${i})">${w}</button>`
+      : ''
+  ).join('');
+
+  if (buildState.answer.length === 0) {
+    answer.innerHTML = '<span class="build-placeholder">اضغط الكلمات لبناء الجملة</span>';
+    answer.classList.remove('has-items');
+  } else {
+    answer.classList.add('has-items');
+    answer.innerHTML = buildState.answer.map((w, i) =>
+      `<button class="word-block in-answer" onclick="buildRemoveWord(${i})">${w}</button>`
+    ).join('');
+  }
+}
+
+function buildPickWord(poolIdx) {
+  if (session.answered) return;
+  const w = buildState.words[poolIdx];
+  if (w === null) return;
+  buildState.answer.push(w);
+  buildState.words[poolIdx] = null;
+  renderBuildUI();
+}
+
+function buildRemoveWord(answerIdx) {
+  if (session.answered) return;
+  const w = buildState.answer[answerIdx];
+  buildState.answer.splice(answerIdx, 1);
+  // return to first null slot in words
+  const slot = buildState.words.indexOf(null);
+  if (slot !== -1) buildState.words[slot] = w;
+  else buildState.words.push(w);
+  renderBuildUI();
+}
+
+function resetBuild() {
+  if (session.answered) return;
+  const item = session.items[session.index];
+  const words = item.words || segmentHanzi(item.hanzi, allVocab);
+  buildState = { words: shuffle([...(words || [])]), answer: [], original: words || [] };
+  renderBuildUI();
+}
+
+function submitBuild() {
+  if (session.answered) return;
+  const item = session.items[session.index];
+  if (buildState.answer.length === 0) { showToast('ضع الكلمات أولاً'); return; }
+  const userSentence = buildState.answer.join('');
+  const correct = normChinese(userSentence) === normChinese(item.hanzi);
+  session.answered = true;
+  showFeedback(correct, item, userSentence);
+  recordAnswer(correct, item, userSentence);
+  // Disable word blocks
+  document.querySelectorAll('.word-block').forEach(b => b.style.pointerEvents = 'none');
+}
+
+// ═══════════════════════════════════════════════════════
+// CLOZE MODE
+// ═══════════════════════════════════════════════════════
+function renderCloze(item, qCard) {
+  const words = item.words || segmentHanzi(item.hanzi, allVocab);
+  if (!words || words.length < 2) {
+    console.warn('[quiz_cloze] Skipping unsegmentable item:', item.hanzi);
+    session.index++;
+    if (session.index >= session.items.length) { endSession(); return; }
+    renderQuiz();
+    return;
+  }
+
+  // Prefer word with length > 1, else random
+  const multiChar = words.map((w,i) => ({w,i})).filter(x => x.w.length > 1);
+  const target = multiChar.length > 0
+    ? multiChar[Math.floor(Math.random() * multiChar.length)]
+    : { w: words[Math.floor(Math.random() * words.length)], i: Math.floor(Math.random() * words.length) };
+
+  const blankWord = target.w;
+  const blankIdx = target.i;
+
+  // Build display sentence with blank
+  const displayWords = words.map((w, i) =>
+    i === blankIdx ? `<span class="cloze-blank">＿＿＿</span>` : w
+  );
+
+  qCard.innerHTML = `
+    <div class="quiz-type-label">أكمل الفراغ</div>
+    <div class="cloze-sentence" dir="ltr">${displayWords.join('')}</div>
+    <div class="quiz-prompt-arabic" style="font-size:1.1rem; margin-top:4px">${item.arabic}</div>
+  `;
+
+  // Build choices: correct + 3 distractors from vocab
+  const pool = allVocab.filter(v => normChinese(v.hanzi) !== normChinese(blankWord) && v.hanzi && v.hanzi.length > 0);
+  const distractors = shuffle(pool).slice(0, 3).map(v => v.hanzi);
+  // Guard: ensure no duplicates or undefined
+  const unique = [...new Set([blankWord, ...distractors].filter(Boolean))];
+  while (unique.length < 4 && pool.length > unique.length) {
+    const extra = pool[unique.length]?.hanzi;
+    if (extra && !unique.includes(extra)) unique.push(extra);
+  }
+  const choices = shuffle(unique.slice(0, 4));
+
+  document.getElementById('clozeWrap').style.display = '';
+  document.getElementById('clozeChoices').innerHTML = choices.map(c =>
+    `<button class="quiz-choice" style="font-family:'Noto Serif SC',serif; font-size:1.2rem"
+      onclick="submitCloze(this, '${escapeAttr(c)}', '${escapeAttr(blankWord)}')">${c}</button>`
+  ).join('');
+}
+
+function submitCloze(btn, chosen, correct) {
+  const item = session.items[session.index];
+  const isCorrect = normChinese(chosen) === normChinese(correct);
+  document.querySelectorAll('#clozeChoices .quiz-choice').forEach(b => {
+    b.disabled = true;
+    if (normChinese(b.textContent) === normChinese(correct)) b.classList.add('correct-choice');
+  });
+  if (!isCorrect) btn.classList.add('wrong-choice');
+  showFeedback(isCorrect, item, chosen);
+  recordAnswer(isCorrect, item, chosen);
+}
+
+// ═══════════════════════════════════════════════════════
+// REVIEW FILTERS
+// ═══════════════════════════════════════════════════════
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function getReviewItems(filter) {
+  const raw = localStorage.getItem('hsk1_progress');
+  const prog = raw ? JSON.parse(raw) : {};
+  const all = allVocab.concat(allSentences).concat(allDialogues);
+  const today = todayISO();
+
+  return all.filter(item => {
+    const key = progressKey(item);
+    const p = prog[key];
+    if (!p) return false;
+    if (filter === 'today') return p.last_seen_date === today;
+    if (filter === 'wrong') return (p.wrong_count || 0) > 0;
+    if (filter === 'difficult') return p.difficult === true;
+    if (filter === 'mixed') return (p.wrong_count || 0) > 0 || p.difficult === true;
+    return false;
+  });
+}
+
+function updateReviewCounts() {
+  ['today','wrong','difficult','mixed'].forEach(f => {
+    const el = document.getElementById('reviewCount' + f.charAt(0).toUpperCase() + f.slice(1));
+    if (el) el.textContent = getReviewItems(f).length;
+  });
+}
+
+function startReview(filter) {
+  const items = getReviewItems(filter);
+  if (!items.length) { showToast('لا توجد عناصر في هذه الفئة'); return; }
+  // Use current mode tab for quiz type
+  startSession(items);
+}
+
+// ═══════════════════════════════════════════════════════
+// LESSON COMPLETION
+// ═══════════════════════════════════════════════════════
+function renderLessonProgress() {
+  const raw = localStorage.getItem('hsk1_progress');
+  const prog = raw ? JSON.parse(raw) : {};
+  const all = allVocab.concat(allSentences).concat(allDialogues);
+  const list = document.getElementById('lessonProgressList');
+  if (!list) return;
+
+  list.innerHTML = LESSONS.map(l => {
+    const lessonItems = all.filter(x => x.lesson === l);
+    const total = lessonItems.length;
+    if (total === 0) return '';
+    const known = lessonItems.filter(x => {
+      const p = prog[progressKey(x)];
+      return p && p.known;
+    }).length;
+    const pct = Math.round((known / total) * 100);
+    return `
+      <div class="lesson-progress-item">
+        <span class="lesson-progress-label">الدرس ${l}</span>
+        <div class="lesson-progress-bar-wrap">
+          <div class="lesson-progress-bar-fill" style="width:${pct}%"></div>
+        </div>
+        <span class="lesson-progress-pct">${pct}%</span>
+      </div>`;
+  }).join('');
+}
+
+
+function endSession() {
+  if (session.mode === 'flashcard') {
+    showHome();
+    return;
+  }
+  const total = session.correct + session.wrong;
+  const pct = total ? Math.round((session.correct / total) * 100) : 0;
+  document.getElementById('resultsScore').textContent = pct + '%';
+  document.getElementById('totalQ').textContent = total;
+  document.getElementById('correctQ').textContent = session.correct;
+  document.getElementById('wrongQ').textContent = session.wrong;
+
+  const ms = document.getElementById('mistakesSection');
+  const ml = document.getElementById('mistakesList');
+  if (session.mistakes.length) {
+    ms.style.display = '';
+    ml.innerHTML = session.mistakes.map(m => `
+      <div class="mistake-item">
+        <div class="mistake-q">السؤال:</div>
+        <div class="mistake-hanzi">${m.item.hanzi}</div>
+        <div class="mistake-line">
+          <span style="color:var(--text2); font-size:0.85rem">إجابتك:</span>
+          <span class="mistake-user">${m.userAnswer}</span>
+        </div>
+        <div class="mistake-line">
+          <span style="color:var(--text2); font-size:0.85rem">الصواب:</span>
+          <span class="mistake-correct">${m.correctAnswer}</span>
+        </div>
+      </div>
+    `).join('');
+  } else {
+    ms.style.display = 'none';
+  }
+  showView('resultsView');
+}
+
+// ═══════════════════════════════════════════════════════
+// STATS
+// ═══════════════════════════════════════════════════════
+function showStats() {
+  renderStats();
+  showView('statsView');
+}
+
+function renderStats() {
+  const threshold = parseInt(document.getElementById('weakThreshold').value) || 2;
+  document.getElementById('thresholdLabel').textContent = threshold;
+
+  const all = allVocab.concat(allSentences).concat(allDialogues);
+  const raw = localStorage.getItem('hsk1_progress');
+  const prog = raw ? JSON.parse(raw) : {};
+
+  let studied = 0, known = 0, difficult = 0, totalQ = 0, totalCorrect = 0;
+  const weak = [];
+
+  for (const [key, p] of Object.entries(prog)) {
+    if (p.studied) studied++;
+    if (p.known) known++;
+    if (p.difficult) difficult++;
+    if (typeof p.wrong_count === 'number' && p.wrong_count > 0) {
+      totalQ += p.wrong_count;
+    }
+  }
+  // accuracy: derived from session history not stored, so use wrong_counts approximation
+  // We store per-item total wrongs; can't derive total correct from this store alone
+  // Show studied as proxy for answered
+  const accuracy = studied ? Math.max(0, Math.round(((studied - Object.values(prog).filter(p=>p.wrong_count>0).length) / studied) * 100)) : 0;
+
+  document.getElementById('statStudied').textContent = studied;
+  document.getElementById('statAccuracy').textContent = accuracy + '%';
+  document.getElementById('statKnown').textContent = known;
+  document.getElementById('statDifficult').textContent = difficult;
+
+  // Weak items
+  const weakItems = [];
+  for (const [key, p] of Object.entries(prog)) {
+    if ((p.wrong_count || 0) >= threshold) {
+      const item = all.find(x => progressKey(x) === key);
+      if (item) weakItems.push({ item, wc: p.wrong_count });
+    }
+  }
+  weakItems.sort((a,b) => b.wc - a.wc);
+
+  const wl = document.getElementById('weakList');
+  if (!weakItems.length) {
+    wl.innerHTML = '<div class="empty-state">لا توجد عناصر ضعيفة 🎉</div>';
+  } else {
+    wl.innerHTML = weakItems.slice(0,30).map(({item, wc}) => `
+      <div class="weak-item">
+        <div>
+          <div class="weak-hanzi">${item.hanzi}</div>
+          <div class="weak-arabic">${item.arabic}</div>
+        </div>
+        <div class="weak-badge">${wc} ✗</div>
+      </div>
+    `).join('');
+  }
+}
+
+function confirmReset() {
+  if (confirm('هل تريد مسح كل بيانات التقدم؟ لا يمكن التراجع.')) {
+    localStorage.removeItem('hsk1_progress');
+    showToast('تم مسح التقدم');
+    renderStats();
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// PROGRESS STORAGE
+// ═══════════════════════════════════════════════════════
+function progressKey(item) {
+  // Globally unique key: type_id
+  if (item && item.type && item.id !== undefined) return `${item.type}_${item.id}`;
+  return String(item);
+}
+function getProgress(item) {
+  const raw = localStorage.getItem('hsk1_progress');
+  const prog = raw ? JSON.parse(raw) : {};
+  return prog[progressKey(item)] || null;
+}
+function saveProgress(item, data) {
+  const raw = localStorage.getItem('hsk1_progress');
+  const prog = raw ? JSON.parse(raw) : {};
+  const key = progressKey(item);
+  const today = todayISO();
+  prog[key] = { ...(prog[key] || {}), ...data, last_seen: Date.now(), last_seen_date: today };
+  localStorage.setItem('hsk1_progress', JSON.stringify(prog));
+}
+
+// ═══════════════════════════════════════════════════════
+// ANSWER NORMALIZATION
+// ═══════════════════════════════════════════════════════
+function normChinese(s) {
+  if (!s) return '';
+  return s
+    .replace(/[\s\u3000]+/g, '')
+    .replace(/[。，！？、；：""''【】（）《》\.\,\!\?\;\:\"\'\[\]\(\)]/g, '')
+    .replace(/[\uff01-\uff5e]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0))
+    .trim().toLowerCase();
+}
+function normArabic(s) {
+  if (!s) return '';
+  return s
+    .replace(/[\u0610-\u061A\u064B-\u065F\u0670]/g, '') // diacritics
+    .replace(/\u0640/g, '')                               // tatweel
+    .replace(/[أإآ]/g, 'ا')
+    .replace(/ى/g, 'ي')
+    .replace(/[\.،\!\?؟,]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// ═══════════════════════════════════════════════════════
+// THEME
+// ═══════════════════════════════════════════════════════
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const isLight = document.body.classList.contains('light-mode');
+  localStorage.setItem('hsk1_theme', isLight ? 'light' : 'dark');
+  document.getElementById('darkToggle').textContent = isLight ? '☀️' : '🌙';
+}
+function loadTheme() {
+  const t = localStorage.getItem('hsk1_theme');
+  if (t === 'light') {
+    document.body.classList.add('light-mode');
+    document.getElementById('darkToggle').textContent = '☀️';
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// VIEW MANAGEMENT
+// ═══════════════════════════════════════════════════════
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+function showHome() {
+  showView('homeView');
+  updateCount();
+  updateReviewCounts();
+  renderLessonProgress();
+}
+
+// ═══════════════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════════════
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ═══════════════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════════════
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function escapeAttr(s) {
+  return String(s).replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+
+// Start
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,1782 @@
+[
+  {
+    "id": 1,
+    "lesson": 1,
+    "keyword_id": 1,
+    "keyword": "你",
+    "hanzi": "你是学生。",
+    "pinyin": "nǐ shì xué shēng",
+    "arabic": "أنت طالب.",
+    "type": "sentence"
+  },
+  {
+    "id": 2,
+    "lesson": 1,
+    "keyword_id": 2,
+    "keyword": "好",
+    "hanzi": "我很好。",
+    "pinyin": "wǒ hěn hǎo",
+    "arabic": "أنا بخير.",
+    "type": "sentence"
+  },
+  {
+    "id": 3,
+    "lesson": 1,
+    "keyword_id": 3,
+    "keyword": "您",
+    "hanzi": "您好！",
+    "pinyin": "nín hǎo",
+    "arabic": "مرحباً (لإظهار الاحترام).",
+    "type": "sentence"
+  },
+  {
+    "id": 4,
+    "lesson": 1,
+    "keyword_id": 4,
+    "keyword": "你们",
+    "hanzi": "你们是朋友。",
+    "pinyin": "nǐ men shì péng you",
+    "arabic": "أنتم أصدقاء.",
+    "type": "sentence"
+  },
+  {
+    "id": 5,
+    "lesson": 1,
+    "keyword_id": 5,
+    "keyword": "对不起",
+    "hanzi": "对不起，我迟到了。",
+    "pinyin": "duì bu qǐ, wǒ chí dào le",
+    "arabic": "آسف، لقد تأخرت.",
+    "type": "sentence"
+  },
+  {
+    "id": 6,
+    "lesson": 1,
+    "keyword_id": 6,
+    "keyword": "没关系",
+    "hanzi": "没关系，以后不要迟到。",
+    "pinyin": "méi guān xi, yǐ hòu bú yào chí dào",
+    "arabic": "لا بأس، لا تتأخر لاحقاً.",
+    "type": "sentence"
+  },
+  {
+    "id": 7,
+    "lesson": 2,
+    "keyword_id": 7,
+    "keyword": "谢谢",
+    "hanzi": "谢谢你！",
+    "pinyin": "xiè xie nǐ",
+    "arabic": "شكراً لك!",
+    "type": "sentence"
+  },
+  {
+    "id": 8,
+    "lesson": 2,
+    "keyword_id": 8,
+    "keyword": "不",
+    "hanzi": "我不是老师。",
+    "pinyin": "wǒ bú shì lǎo shī",
+    "arabic": "أنا لست معلماً.",
+    "type": "sentence"
+  },
+  {
+    "id": 9,
+    "lesson": 2,
+    "keyword_id": 9,
+    "keyword": "不客气",
+    "hanzi": "不客气！ 我们是朋友。",
+    "pinyin": "bú kè qì! wǒ men shì péng you",
+    "arabic": "على الرحب والسعة! نحن أصدقاء.",
+    "type": "sentence"
+  },
+  {
+    "id": 10,
+    "lesson": 2,
+    "keyword_id": 10,
+    "keyword": "再见",
+    "hanzi": "明天见，再见！",
+    "pinyin": "míng tiān jiàn, zài jiàn",
+    "arabic": "أراك غداً، إلى اللقاء!",
+    "type": "sentence"
+  },
+  {
+    "id": 11,
+    "lesson": 3,
+    "keyword_id": 11,
+    "keyword": "叫",
+    "hanzi": "我叫李月。",
+    "pinyin": "wǒ jiào lǐ yuè",
+    "arabic": "اسمي لي يوي.",
+    "type": "sentence"
+  },
+  {
+    "id": 12,
+    "lesson": 3,
+    "keyword_id": 12,
+    "keyword": "什么",
+    "hanzi": "你叫什么名字？",
+    "pinyin": "nǐ jiào shén me míng zi",
+    "arabic": "ما اسمك؟",
+    "type": "sentence"
+  },
+  {
+    "id": 13,
+    "lesson": 3,
+    "keyword_id": 13,
+    "keyword": "名字",
+    "hanzi": "我的名字是李月。",
+    "pinyin": "wǒ de míng zi shì lǐ yuè",
+    "arabic": "اسمي لي يوي.",
+    "type": "sentence"
+  },
+  {
+    "id": 14,
+    "lesson": 3,
+    "keyword_id": 14,
+    "keyword": "我",
+    "hanzi": "我是学生。",
+    "pinyin": "wǒ shì xué shēng",
+    "arabic": "أنا طالب.",
+    "type": "sentence"
+  },
+  {
+    "id": 15,
+    "lesson": 3,
+    "keyword_id": 15,
+    "keyword": "李月",
+    "hanzi": "李月是我的朋友。",
+    "pinyin": "lǐ yuè shì wǒ de péng you",
+    "arabic": "لي يوي صديقي.",
+    "type": "sentence"
+  },
+  {
+    "id": 16,
+    "lesson": 3,
+    "keyword_id": 16,
+    "keyword": "是",
+    "hanzi": "他是老师。",
+    "pinyin": "tā shì lǎo shī",
+    "arabic": "هو معلم.",
+    "type": "sentence"
+  },
+  {
+    "id": 17,
+    "lesson": 3,
+    "keyword_id": 17,
+    "keyword": "老师",
+    "hanzi": "她是我们的老师。",
+    "pinyin": "tā shì wǒ men de lǎo shī",
+    "arabic": "هي معلمتنا.",
+    "type": "sentence"
+  },
+  {
+    "id": 18,
+    "lesson": 3,
+    "keyword_id": 18,
+    "keyword": "吗",
+    "hanzi": "你是学生吗？",
+    "pinyin": "nǐ shì xué shēng ma",
+    "arabic": "هل أنت طالب؟",
+    "type": "sentence"
+  },
+  {
+    "id": 19,
+    "lesson": 3,
+    "keyword_id": 19,
+    "keyword": "学生",
+    "hanzi": "我是学生。",
+    "pinyin": "wǒ shì xué shēng",
+    "arabic": "أنا طالب.",
+    "type": "sentence"
+  },
+  {
+    "id": 20,
+    "lesson": 3,
+    "keyword_id": 20,
+    "keyword": "人",
+    "hanzi": "他是一个好人。",
+    "pinyin": "tā shì yī gè hǎo rén",
+    "arabic": "هو شخص طيب.",
+    "type": "sentence"
+  },
+  {
+    "id": 21,
+    "lesson": 3,
+    "keyword_id": 21,
+    "keyword": "中国",
+    "hanzi": "我来自中国。",
+    "pinyin": "wǒ lái zì zhōng guó",
+    "arabic": "أنا من الصين.",
+    "type": "sentence"
+  },
+  {
+    "id": 22,
+    "lesson": 3,
+    "keyword_id": 22,
+    "keyword": "美国",
+    "hanzi": "她是美国人。",
+    "pinyin": "tā shì měi guó rén",
+    "arabic": "هي أمريكية.",
+    "type": "sentence"
+  },
+  {
+    "id": 23,
+    "lesson": 3,
+    "keyword_id": 23,
+    "keyword": "埃及",
+    "hanzi": "他来自埃及。",
+    "pinyin": "tā lái zì āi jí",
+    "arabic": "هو من مصر.",
+    "type": "sentence"
+  },
+  {
+    "id": 24,
+    "lesson": 3,
+    "keyword_id": 24,
+    "keyword": "希腊",
+    "hanzi": "我想去希腊旅游。",
+    "pinyin": "wǒ xiǎng qù xī là lǚ yóu",
+    "arabic": "أريد السفر إلى اليونان.",
+    "type": "sentence"
+  },
+  {
+    "id": 25,
+    "lesson": 3,
+    "keyword_id": 25,
+    "keyword": "叙利亚",
+    "hanzi": "叙利亚是一个美丽的国家。",
+    "pinyin": "xù lì yà shì yī gè měi lì de guó jiā",
+    "arabic": "سوريا بلد جميل.",
+    "type": "sentence"
+  },
+  {
+    "id": 26,
+    "lesson": 4,
+    "keyword_id": 26,
+    "keyword": "她",
+    "hanzi": "她是我的朋友。",
+    "pinyin": "tā shì wǒ de péng you",
+    "arabic": "هي صديقتي.",
+    "type": "sentence"
+  },
+  {
+    "id": 27,
+    "lesson": 4,
+    "keyword_id": 27,
+    "keyword": "谁",
+    "hanzi": "他是谁？",
+    "pinyin": "tā shì shéi",
+    "arabic": "من هو؟",
+    "type": "sentence"
+  },
+  {
+    "id": 28,
+    "lesson": 4,
+    "keyword_id": 28,
+    "keyword": "的",
+    "hanzi": "这是我的书。",
+    "pinyin": "zhè shì wǒ de shū",
+    "arabic": "هذا كتابي.",
+    "type": "sentence"
+  },
+  {
+    "id": 29,
+    "lesson": 4,
+    "keyword_id": 29,
+    "keyword": "汉语",
+    "hanzi": "我正在学汉语。",
+    "pinyin": "wǒ zhèng zài xué hàn yǔ",
+    "arabic": "أنا أتعلم اللغة الصينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 30,
+    "lesson": 4,
+    "keyword_id": 30,
+    "keyword": "哪",
+    "hanzi": "你来自哪个国家？",
+    "pinyin": "nǐ lái zì nǎ gè guó jiā",
+    "arabic": "من أي بلد أنت؟",
+    "type": "sentence"
+  },
+  {
+    "id": 31,
+    "lesson": 4,
+    "keyword_id": 31,
+    "keyword": "国",
+    "hanzi": "我是中国人。",
+    "pinyin": "wǒ shì zhōng guó rén",
+    "arabic": "أنا صيني.",
+    "type": "sentence"
+  },
+  {
+    "id": 32,
+    "lesson": 4,
+    "keyword_id": 32,
+    "keyword": "呢",
+    "hanzi": "我是埃及人。你呢？",
+    "pinyin": "wǒ shì āi jí rén. nǐ ne",
+    "arabic": "أنا مصري. وأنت؟",
+    "type": "sentence"
+  },
+  {
+    "id": 33,
+    "lesson": 4,
+    "keyword_id": 33,
+    "keyword": "他",
+    "hanzi": "他是我的同学。",
+    "pinyin": "tā shì wǒ de tóng xué",
+    "arabic": "هو زميلي.",
+    "type": "sentence"
+  },
+  {
+    "id": 34,
+    "lesson": 4,
+    "keyword_id": 34,
+    "keyword": "同学",
+    "hanzi": "李月是我的同学。",
+    "pinyin": "lǐ yuè shì wǒ de tóng xué",
+    "arabic": "لي يوي زميلتي.",
+    "type": "sentence"
+  },
+  {
+    "id": 35,
+    "lesson": 4,
+    "keyword_id": 35,
+    "keyword": "朋友",
+    "hanzi": "我有很多朋友。",
+    "pinyin": "wǒ yǒu hěn duō péng you",
+    "arabic": "لدي أصدقاء كثيرون.",
+    "type": "sentence"
+  },
+  {
+    "id": 36,
+    "lesson": 5,
+    "keyword_id": 36,
+    "keyword": "家",
+    "hanzi": "我的家很大。",
+    "pinyin": "wǒ de jiā hěn dà",
+    "arabic": "أسرتي كبيرة.",
+    "type": "sentence"
+  },
+  {
+    "id": 37,
+    "lesson": 5,
+    "keyword_id": 37,
+    "keyword": "有",
+    "hanzi": "我家有三口人。",
+    "pinyin": "wǒ jiā yǒu sān kǒu rén",
+    "arabic": "أسرتي بها ثلاثة أفراد.",
+    "type": "sentence"
+  },
+  {
+    "id": 38,
+    "lesson": 5,
+    "keyword_id": 38,
+    "keyword": "口",
+    "hanzi": "你家有几口人？",
+    "pinyin": "nǐ jiā yǒu jǐ kǒu rén",
+    "arabic": "كم فرداً في أسرتك؟",
+    "type": "sentence"
+  },
+  {
+    "id": 39,
+    "lesson": 5,
+    "keyword_id": 39,
+    "keyword": "女儿",
+    "hanzi": "我有一个女儿。",
+    "pinyin": "wǒ yǒu yī gè nǚ ér",
+    "arabic": "لدي ابنة.",
+    "type": "sentence"
+  },
+  {
+    "id": 40,
+    "lesson": 5,
+    "keyword_id": 40,
+    "keyword": "几",
+    "hanzi": "我的女儿五岁了。",
+    "pinyin": "wǒ de nǚ ér wǔ suì le",
+    "arabic": "ابنتي عمرها خمس سنوات.",
+    "type": "sentence"
+  },
+  {
+    "id": 41,
+    "lesson": 5,
+    "keyword_id": 42,
+    "keyword": "了",
+    "hanzi": "我吃饭了。",
+    "pinyin": "wǒ chī fàn le",
+    "arabic": "لقد أكلت.",
+    "type": "sentence"
+  },
+  {
+    "id": 42,
+    "lesson": 5,
+    "keyword_id": 43,
+    "keyword": "今年",
+    "hanzi": "你今年多大？",
+    "pinyin": "nǐ jīn nián duō dà",
+    "arabic": "كم عمرك هذا العام؟",
+    "type": "sentence"
+  },
+  {
+    "id": 43,
+    "lesson": 5,
+    "keyword_id": 44,
+    "keyword": "多",
+    "hanzi": "我有很多书。",
+    "pinyin": "wǒ yǒu hěn duō shū",
+    "arabic": "لدي كتب كثيرة.",
+    "type": "sentence"
+  },
+  {
+    "id": 44,
+    "lesson": 6,
+    "keyword_id": 46,
+    "keyword": "会",
+    "hanzi": "我会说汉语。",
+    "pinyin": "wǒ huì shuō hàn yǔ",
+    "arabic": "أستطيع التحدث بالصينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 45,
+    "lesson": 6,
+    "keyword_id": 47,
+    "keyword": "说",
+    "hanzi": "他说中文。",
+    "pinyin": "tā shuō zhōng wén",
+    "arabic": "هو يتحدث الصينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 46,
+    "lesson": 6,
+    "keyword_id": 48,
+    "keyword": "妈妈",
+    "hanzi": "妈妈在家。",
+    "pinyin": "mā ma zài jiā",
+    "arabic": "أمي في البيت.",
+    "type": "sentence"
+  },
+  {
+    "id": 47,
+    "lesson": 6,
+    "keyword_id": 49,
+    "keyword": "菜",
+    "hanzi": "我喜欢吃中国菜。",
+    "pinyin": "wǒ xǐ huān chī zhōng guó cài",
+    "arabic": "أحب أكل الطعام الصيني.",
+    "type": "sentence"
+  },
+  {
+    "id": 48,
+    "lesson": 6,
+    "keyword_id": 50,
+    "keyword": "很",
+    "hanzi": "今天很冷。",
+    "pinyin": "jīn tiān hěn lěng",
+    "arabic": "اليوم بارد جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 49,
+    "lesson": 6,
+    "keyword_id": 51,
+    "keyword": "好吃",
+    "hanzi": "中国菜很好吃。",
+    "pinyin": "zhōng guó cài hěn hǎo chī",
+    "arabic": "الطعام الصيني لذيذ جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 50,
+    "lesson": 6,
+    "keyword_id": 52,
+    "keyword": "做",
+    "hanzi": "妈妈会做饭。",
+    "pinyin": "mā ma huì zuò fàn",
+    "arabic": "أمي تستطيع الطبخ.",
+    "type": "sentence"
+  },
+  {
+    "id": 51,
+    "lesson": 6,
+    "keyword_id": 53,
+    "keyword": "写",
+    "hanzi": "我会写汉字。",
+    "pinyin": "wǒ huì xiě hàn zì",
+    "arabic": "أستطيع كتابة الرموز الصينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 52,
+    "lesson": 6,
+    "keyword_id": 54,
+    "keyword": "汉字",
+    "hanzi": "汉字很难。",
+    "pinyin": "hàn zì hěn nán",
+    "arabic": "الرموز الصينية صعبة جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 53,
+    "lesson": 6,
+    "keyword_id": 55,
+    "keyword": "字",
+    "hanzi": "这个字怎么读？",
+    "pinyin": "zhè gè zì zěn me dú",
+    "arabic": "كيف يُقرأ هذا الرمز؟",
+    "type": "sentence"
+  },
+  {
+    "id": 54,
+    "lesson": 6,
+    "keyword_id": 56,
+    "keyword": "怎么",
+    "hanzi": "这个字怎么写？",
+    "pinyin": "zhè gè zì zěn me xiě",
+    "arabic": "كيف يُكتب هذا الرمز؟",
+    "type": "sentence"
+  },
+  {
+    "id": 55,
+    "lesson": 6,
+    "keyword_id": 57,
+    "keyword": "读",
+    "hanzi": "请读这个句子。",
+    "pinyin": "qǐng dú zhè gè jù zi",
+    "arabic": "من فضلك اقرأ هذه الجملة.",
+    "type": "sentence"
+  },
+  {
+    "id": 56,
+    "lesson": 7,
+    "keyword_id": 58,
+    "keyword": "请",
+    "hanzi": "请你进来。",
+    "pinyin": "qǐng nǐ jìn lái",
+    "arabic": "من فضلك ادخل.",
+    "type": "sentence"
+  },
+  {
+    "id": 57,
+    "lesson": 7,
+    "keyword_id": 59,
+    "keyword": "问",
+    "hanzi": "我要问老师一个问题。",
+    "pinyin": "wǒ yào wèn lǎo shī yī gè wèn tí",
+    "arabic": "أريد أن أسأل المعلم سؤالاً.",
+    "type": "sentence"
+  },
+  {
+    "id": 58,
+    "lesson": 7,
+    "keyword_id": 60,
+    "keyword": "今天",
+    "hanzi": "今天我们有中文课。",
+    "pinyin": "jīn tiān wǒ men yǒu zhōng wén kè",
+    "arabic": "اليوم لدينا درس لغة صينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 59,
+    "lesson": 8,
+    "keyword_id": 61,
+    "keyword": "号",
+    "hanzi": "今天是三号。",
+    "pinyin": "jīn tiān shì sān hào",
+    "arabic": "اليوم هو الثالث.",
+    "type": "sentence"
+  },
+  {
+    "id": 60,
+    "lesson": 8,
+    "keyword_id": 63,
+    "keyword": "星期",
+    "hanzi": "星期五我们不上课。",
+    "pinyin": "xīng qī wǔ wǒ men bú shàng kè",
+    "arabic": "يوم الجمعة ليس لدينا درس.",
+    "type": "sentence"
+  },
+  {
+    "id": 61,
+    "lesson": 8,
+    "keyword_id": 62,
+    "keyword": "月",
+    "hanzi": "现在是九月。",
+    "pinyin": "xiàn zài shì jiǔ yuè",
+    "arabic": "الآن شهر سبتمبر.",
+    "type": "sentence"
+  },
+  {
+    "id": 62,
+    "lesson": 8,
+    "keyword_id": 64,
+    "keyword": "昨天",
+    "hanzi": "昨天我去学校了。",
+    "pinyin": "zuó tiān wǒ qù xué xiào le",
+    "arabic": "بالأمس ذهبت إلى المدرسة.",
+    "type": "sentence"
+  },
+  {
+    "id": 63,
+    "lesson": 8,
+    "keyword_id": 65,
+    "keyword": "明天",
+    "hanzi": "明天我们去商店。",
+    "pinyin": "míng tiān wǒ men qù shāng diàn",
+    "arabic": "غداً سنذهب إلى المتجر.",
+    "type": "sentence"
+  },
+  {
+    "id": 64,
+    "lesson": 8,
+    "keyword_id": 66,
+    "keyword": "去",
+    "hanzi": "我去朋友家。",
+    "pinyin": "wǒ qù péng you jiā",
+    "arabic": "أنا ذاهب إلى بيت صديقي.",
+    "type": "sentence"
+  },
+  {
+    "id": 65,
+    "lesson": 8,
+    "keyword_id": 67,
+    "keyword": "学校",
+    "hanzi": "我的学校很大。",
+    "pinyin": "wǒ de xué xiào hěn dà",
+    "arabic": "مدرستي كبيرة جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 66,
+    "lesson": 8,
+    "keyword_id": 68,
+    "keyword": "看",
+    "hanzi": "我在家看电视。",
+    "pinyin": "wǒ zài jiā kàn diàn shì",
+    "arabic": "أشاهد التلفاز في البيت.",
+    "type": "sentence"
+  },
+  {
+    "id": 67,
+    "lesson": 8,
+    "keyword_id": 69,
+    "keyword": "书",
+    "hanzi": "我喜欢这本书。",
+    "pinyin": "wǒ xǐ huān zhè běn shū",
+    "arabic": "أحب هذا الكتاب.",
+    "type": "sentence"
+  },
+  {
+    "id": 68,
+    "lesson": 8,
+    "keyword_id": 70,
+    "keyword": "想",
+    "hanzi": "我想喝水。",
+    "pinyin": "wǒ xiǎng hē shuǐ",
+    "arabic": "أريد شرب الماء.",
+    "type": "sentence"
+  },
+  {
+    "id": 69,
+    "lesson": 8,
+    "keyword_id": 71,
+    "keyword": "喝",
+    "hanzi": "我不太喜欢喝茶。",
+    "pinyin": "wǒ bú tài xǐ huān hē chá",
+    "arabic": "لا أحب شرب الشاي كثيراً.",
+    "type": "sentence"
+  },
+  {
+    "id": 70,
+    "lesson": 8,
+    "keyword_id": 72,
+    "keyword": "茶",
+    "hanzi": "她喜欢喝茶。",
+    "pinyin": "tā xǐ huān hē chá",
+    "arabic": "هي تحب شرب الشاي.",
+    "type": "sentence"
+  },
+  {
+    "id": 71,
+    "lesson": 8,
+    "keyword_id": 73,
+    "keyword": "吃",
+    "hanzi": "我吃面条。",
+    "pinyin": "wǒ chī miàn tiáo",
+    "arabic": "أنا آكل النودلز.",
+    "type": "sentence"
+  },
+  {
+    "id": 72,
+    "lesson": 8,
+    "keyword_id": 74,
+    "keyword": "米饭",
+    "hanzi": "晚饭我们吃米饭。",
+    "pinyin": "wǎn fàn wǒ men chī mǐ fàn",
+    "arabic": "في العشاء نأكل الأرز.",
+    "type": "sentence"
+  },
+  {
+    "id": 73,
+    "lesson": 8,
+    "keyword_id": 75,
+    "keyword": "下午",
+    "hanzi": "下午我去学校。",
+    "pinyin": "xià wǔ wǒ qù xué xiào",
+    "arabic": "بعد الظهر أذهب إلى المدرسة.",
+    "type": "sentence"
+  },
+  {
+    "id": 74,
+    "lesson": 8,
+    "keyword_id": 76,
+    "keyword": "商店",
+    "hanzi": "我去商店买一些东西。",
+    "pinyin": "wǒ qù shāng diàn mǎi yī xiē dōng xī",
+    "arabic": "أذهب إلى المتجر لشراء بعض الأشياء.",
+    "type": "sentence"
+  },
+  {
+    "id": 75,
+    "lesson": 8,
+    "keyword_id": 77,
+    "keyword": "买",
+    "hanzi": "我要买一个苹果。",
+    "pinyin": "wǒ yào mǎi yī gè píng guǒ",
+    "arabic": "أريد شراء تفاحة.",
+    "type": "sentence"
+  },
+  {
+    "id": 76,
+    "lesson": 9,
+    "keyword_id": 78,
+    "keyword": "个",
+    "hanzi": "教室里有一个学生。",
+    "pinyin": "jiào shì lǐ yǒu yī gè xué shēng",
+    "arabic": "في الفصل طالب.",
+    "type": "sentence"
+  },
+  {
+    "id": 77,
+    "lesson": 9,
+    "keyword_id": 79,
+    "keyword": "杯子",
+    "hanzi": "这是我的杯子。",
+    "pinyin": "zhè shì wǒ de bēi zi",
+    "arabic": "هذا كوبي.",
+    "type": "sentence"
+  },
+  {
+    "id": 78,
+    "lesson": 9,
+    "keyword_id": 80,
+    "keyword": "这",
+    "hanzi": "这本书很好。",
+    "pinyin": "zhè běn shū hěn hǎo",
+    "arabic": "هذا الكتاب جيد جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 79,
+    "lesson": 9,
+    "keyword_id": 81,
+    "keyword": "多少",
+    "hanzi": "这个杯子多少钱？",
+    "pinyin": "zhè gè bēi zi duō shǎo qián",
+    "arabic": "كم سعر هذا الكوب؟",
+    "type": "sentence"
+  },
+  {
+    "id": 80,
+    "lesson": 9,
+    "keyword_id": 82,
+    "keyword": "钱",
+    "hanzi": "我没有很多钱。",
+    "pinyin": "wǒ méi yǒu hěn duō qián",
+    "arabic": "ليس لدي مال كثير.",
+    "type": "sentence"
+  },
+  {
+    "id": 81,
+    "lesson": 9,
+    "keyword_id": 83,
+    "keyword": "块",
+    "hanzi": "这十块钱不是我的。",
+    "pinyin": "zhè shí kuài qián bú shì wǒ de",
+    "arabic": "هذه العشر وحدات النقدية ليست لي.",
+    "type": "sentence"
+  },
+  {
+    "id": 82,
+    "lesson": 9,
+    "keyword_id": 84,
+    "keyword": "那",
+    "hanzi": "那是我的老师。",
+    "pinyin": "nà shì wǒ de lǎo shī",
+    "arabic": "ذاك أستاذي.",
+    "type": "sentence"
+  },
+  {
+    "id": 83,
+    "lesson": 9,
+    "keyword_id": 85,
+    "keyword": "小",
+    "hanzi": "这个苹果很小。",
+    "pinyin": "zhè gè píng guǒ hěn xiǎo",
+    "arabic": "هذه التفاحة صغيرة جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 84,
+    "lesson": 9,
+    "keyword_id": 86,
+    "keyword": "猫",
+    "hanzi": "我有一只猫。",
+    "pinyin": "wǒ yǒu yī zhī māo",
+    "arabic": "لدي قطة.",
+    "type": "sentence"
+  },
+  {
+    "id": 85,
+    "lesson": 9,
+    "keyword_id": 87,
+    "keyword": "在",
+    "hanzi": "我在学校。",
+    "pinyin": "wǒ zài xué xiào",
+    "arabic": "أنا في المدرسة.",
+    "type": "sentence"
+  },
+  {
+    "id": 86,
+    "lesson": 9,
+    "keyword_id": 88,
+    "keyword": "那儿",
+    "hanzi": "我的朋友在那儿。",
+    "pinyin": "wǒ de péng you zài nàr",
+    "arabic": "صديقي هناك.",
+    "type": "sentence"
+  },
+  {
+    "id": 87,
+    "lesson": 9,
+    "keyword_id": 89,
+    "keyword": "狗",
+    "hanzi": "那是我的狗。",
+    "pinyin": "nà shì wǒ de gǒu",
+    "arabic": "ذلك كلبي.",
+    "type": "sentence"
+  },
+  {
+    "id": 88,
+    "lesson": 9,
+    "keyword_id": 90,
+    "keyword": "椅子",
+    "hanzi": "房间里有一把椅子。",
+    "pinyin": "fáng jiān lǐ yǒu yī bǎ yǐ zi",
+    "arabic": "في الغرفة كرسي.",
+    "type": "sentence"
+  },
+  {
+    "id": 89,
+    "lesson": 9,
+    "keyword_id": 91,
+    "keyword": "下面",
+    "hanzi": "桌子下面有一只猫。",
+    "pinyin": "zhuō zi xià miàn yǒu yī zhī māo",
+    "arabic": "تحت الطاولة قطة.",
+    "type": "sentence"
+  },
+  {
+    "id": 90,
+    "lesson": 9,
+    "keyword_id": 92,
+    "keyword": "下",
+    "hanzi": "他马上下楼。",
+    "pinyin": "tā mǎ shàng xià lóu",
+    "arabic": "سينزل فوراً.",
+    "type": "sentence"
+  },
+  {
+    "id": 91,
+    "lesson": 9,
+    "keyword_id": 93,
+    "keyword": "在",
+    "hanzi": "书在桌子上。",
+    "pinyin": "shū zài zhuō zi shàng",
+    "arabic": "الكتاب على الطاولة.",
+    "type": "sentence"
+  },
+  {
+    "id": 92,
+    "lesson": 10,
+    "keyword_id": 94,
+    "keyword": "哪儿",
+    "hanzi": "你在哪儿？",
+    "pinyin": "nǐ zài nǎr",
+    "arabic": "أين أنت؟",
+    "type": "sentence"
+  },
+  {
+    "id": 93,
+    "lesson": 10,
+    "keyword_id": 95,
+    "keyword": "工作",
+    "hanzi": "我爸爸在医院工作。",
+    "pinyin": "wǒ bà ba zài yī yuàn gōng zuò",
+    "arabic": "والدي يعمل في المستشفى.",
+    "type": "sentence"
+  },
+  {
+    "id": 94,
+    "lesson": 10,
+    "keyword_id": 96,
+    "keyword": "儿子",
+    "hanzi": "他有一个儿子。",
+    "pinyin": "tā yǒu yī gè ér zi",
+    "arabic": "هو لديه ابن.",
+    "type": "sentence"
+  },
+  {
+    "id": 95,
+    "lesson": 10,
+    "keyword_id": 97,
+    "keyword": "医院",
+    "hanzi": "医院很大。",
+    "pinyin": "yī yuàn hěn dà",
+    "arabic": "المستشفى كبير جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 96,
+    "lesson": 10,
+    "keyword_id": 98,
+    "keyword": "医生",
+    "hanzi": "她是医生。",
+    "pinyin": "tā shì yī shēng",
+    "arabic": "هي طبيبة.",
+    "type": "sentence"
+  },
+  {
+    "id": 97,
+    "lesson": 10,
+    "keyword_id": 99,
+    "keyword": "爸爸",
+    "hanzi": "我爸爸很忙。",
+    "pinyin": "wǒ bà ba hěn máng",
+    "arabic": "والدي مشغول جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 98,
+    "lesson": 10,
+    "keyword_id": 100,
+    "keyword": "桌子",
+    "hanzi": "桌子上有一本书。",
+    "pinyin": "zhuō zi shàng yǒu yī běn shū",
+    "arabic": "على الطاولة كتاب.",
+    "type": "sentence"
+  },
+  {
+    "id": 99,
+    "lesson": 10,
+    "keyword_id": 101,
+    "keyword": "上",
+    "hanzi": "猫在椅子上。",
+    "pinyin": "māo zài yǐ zi shàng",
+    "arabic": "القطة على الكرسي.",
+    "type": "sentence"
+  },
+  {
+    "id": 100,
+    "lesson": 10,
+    "keyword_id": 102,
+    "keyword": "电脑",
+    "hanzi": "我有一台电脑。",
+    "pinyin": "wǒ yǒu yī tái diàn nǎo",
+    "arabic": "لدي حاسوب.",
+    "type": "sentence"
+  },
+  {
+    "id": 101,
+    "lesson": 10,
+    "keyword_id": 103,
+    "keyword": "和",
+    "hanzi": "我和朋友去学校。",
+    "pinyin": "wǒ hé péng you qù xué xiào",
+    "arabic": "أنا وصديقي نذهب إلى المدرسة.",
+    "type": "sentence"
+  },
+  {
+    "id": 102,
+    "lesson": 10,
+    "keyword_id": 104,
+    "keyword": "本",
+    "hanzi": "书包里有三本书。",
+    "pinyin": "shū bāo lǐ yǒu sān běn shū",
+    "arabic": "في الحقيبة ثلاثة كتب.",
+    "type": "sentence"
+  },
+  {
+    "id": 103,
+    "lesson": 10,
+    "keyword_id": 105,
+    "keyword": "里",
+    "hanzi": "书在包里。",
+    "pinyin": "shū zài bāo lǐ",
+    "arabic": "الكتاب في الحقيبة.",
+    "type": "sentence"
+  },
+  {
+    "id": 104,
+    "lesson": 10,
+    "keyword_id": 106,
+    "keyword": "前面",
+    "hanzi": "学校前面有一家商店。",
+    "pinyin": "xué xiào qián miàn yǒu yī jiā shāng diàn",
+    "arabic": "أمام المدرسة متجر.",
+    "type": "sentence"
+  },
+  {
+    "id": 105,
+    "lesson": 10,
+    "keyword_id": 107,
+    "keyword": "后面",
+    "hanzi": "房子后面有一个花园。",
+    "pinyin": "fáng zi hòu miàn yǒu yī gè huā yuán",
+    "arabic": "خلف المنزل حديقة.",
+    "type": "sentence"
+  },
+  {
+    "id": 106,
+    "lesson": 10,
+    "keyword_id": 108,
+    "keyword": "王芳",
+    "hanzi": "王芳是我的同学。",
+    "pinyin": "wáng fāng shì wǒ de tóng xué",
+    "arabic": "وانغ فانغ زميلتي.",
+    "type": "sentence"
+  },
+  {
+    "id": 107,
+    "lesson": 10,
+    "keyword_id": 109,
+    "keyword": "谢朋",
+    "hanzi": "谢朋在操场。",
+    "pinyin": "xiè péng zài cāo chǎng",
+    "arabic": "شيه بينغ في الملعب.",
+    "type": "sentence"
+  },
+  {
+    "id": 108,
+    "lesson": 10,
+    "keyword_id": 110,
+    "keyword": "这儿",
+    "hanzi": "老师在这儿。",
+    "pinyin": "lǎo shī zài zhèr",
+    "arabic": "الأستاذ هنا.",
+    "type": "sentence"
+  },
+  {
+    "id": 109,
+    "lesson": 11,
+    "keyword_id": 111,
+    "keyword": "没有",
+    "hanzi": "我没有钱。",
+    "pinyin": "wǒ méi yǒu qián",
+    "arabic": "لا أملك نقوداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 110,
+    "lesson": 11,
+    "keyword_id": 112,
+    "keyword": "没",
+    "hanzi": "我昨天没去学校。",
+    "pinyin": "wǒ zuó tiān méi qù xué xiào",
+    "arabic": "بالأمس لم أذهب إلى المدرسة.",
+    "type": "sentence"
+  },
+  {
+    "id": 111,
+    "lesson": 11,
+    "keyword_id": 113,
+    "keyword": "能",
+    "hanzi": "我能说一点汉语。",
+    "pinyin": "wǒ néng shuō yī diǎn hàn yǔ",
+    "arabic": "أستطيع تحدث القليل من الصينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 112,
+    "lesson": 11,
+    "keyword_id": 114,
+    "keyword": "坐",
+    "hanzi": "请坐在椅子上。",
+    "pinyin": "qǐng zuò zài yǐ zi shàng",
+    "arabic": "تفضل بالجلوس على الكرسي.",
+    "type": "sentence"
+  },
+  {
+    "id": 113,
+    "lesson": 11,
+    "keyword_id": 115,
+    "keyword": "现在",
+    "hanzi": "现在是八点。",
+    "pinyin": "xiàn zài shì bā diǎn",
+    "arabic": "الآن الساعة الثامنة.",
+    "type": "sentence"
+  },
+  {
+    "id": 114,
+    "lesson": 11,
+    "keyword_id": 116,
+    "keyword": "点",
+    "hanzi": "三点我回家。",
+    "pinyin": "sān diǎn wǒ huí jiā",
+    "arabic": "الساعة الثالثة أعود إلى البيت.",
+    "type": "sentence"
+  },
+  {
+    "id": 115,
+    "lesson": 11,
+    "keyword_id": 117,
+    "keyword": "分",
+    "hanzi": "现在四点十分。",
+    "pinyin": "xiàn zài sì diǎn shí fēn",
+    "arabic": "الآن الساعة الرابعة وعشر دقائق.",
+    "type": "sentence"
+  },
+  {
+    "id": 116,
+    "lesson": 11,
+    "keyword_id": 118,
+    "keyword": "中午",
+    "hanzi": "中午我们吃饭。",
+    "pinyin": "zhōng wǔ wǒ men chī fàn",
+    "arabic": "عند الظهر نأكل.",
+    "type": "sentence"
+  },
+  {
+    "id": 117,
+    "lesson": 11,
+    "keyword_id": 119,
+    "keyword": "吃饭",
+    "hanzi": "我们七点吃饭。",
+    "pinyin": "wǒ men qī diǎn chī fàn",
+    "arabic": "نحن نأكل الساعة السابعة.",
+    "type": "sentence"
+  },
+  {
+    "id": 118,
+    "lesson": 11,
+    "keyword_id": 120,
+    "keyword": "时候",
+    "hanzi": "我有时间的时候看书。",
+    "pinyin": "wǒ yǒu shí jiān de shí hou kàn shū",
+    "arabic": "عندما يكون لدي وقت أقرأ الكتاب.",
+    "type": "sentence"
+  },
+  {
+    "id": 119,
+    "lesson": 11,
+    "keyword_id": 121,
+    "keyword": "回",
+    "hanzi": "下午我回家。",
+    "pinyin": "xià wǔ wǒ huí jiā",
+    "arabic": "بعد الظهر أعود إلى البيت.",
+    "type": "sentence"
+  },
+  {
+    "id": 120,
+    "lesson": 11,
+    "keyword_id": 122,
+    "keyword": "我们",
+    "hanzi": "我们是学生。",
+    "pinyin": "wǒ men shì xué shēng",
+    "arabic": "نحن طلاب.",
+    "type": "sentence"
+  },
+  {
+    "id": 121,
+    "lesson": 11,
+    "keyword_id": 123,
+    "keyword": "电影",
+    "hanzi": "我喜欢中国电影。",
+    "pinyin": "wǒ xǐ huān zhōng guó diàn yǐng",
+    "arabic": "أحب الأفلام الصينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 122,
+    "lesson": 11,
+    "keyword_id": 124,
+    "keyword": "住",
+    "hanzi": "我住在北京。",
+    "pinyin": "wǒ zhù zài běi jīng",
+    "arabic": "أسكن في بكين.",
+    "type": "sentence"
+  },
+  {
+    "id": 123,
+    "lesson": 11,
+    "keyword_id": 125,
+    "keyword": "前",
+    "hanzi": "我们家前有一个公园。",
+    "pinyin": "wǒ men jiā qián yǒu yī gè gōng yuán",
+    "arabic": "أمام منزلنا حديقة.",
+    "type": "sentence"
+  },
+  {
+    "id": 124,
+    "lesson": 11,
+    "keyword_id": 126,
+    "keyword": "北京",
+    "hanzi": "北京是中国的首都。",
+    "pinyin": "běi jīng shì zhōng guó de shǒu dū",
+    "arabic": "بكين عاصمة الصين.",
+    "type": "sentence"
+  },
+  {
+    "id": 125,
+    "lesson": 12,
+    "keyword_id": 127,
+    "keyword": "天气",
+    "hanzi": "今天的天气很好。",
+    "pinyin": "jīn tiān de tiān qì hěn hǎo",
+    "arabic": "طقس اليوم جيد جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 126,
+    "lesson": 12,
+    "keyword_id": 128,
+    "keyword": "怎么样",
+    "hanzi": "你觉得这本书怎么样？",
+    "pinyin": "nǐ jué de zhè běn shū zěn me yàng",
+    "arabic": "ما رأيك في هذا الكتاب؟",
+    "type": "sentence"
+  },
+  {
+    "id": 127,
+    "lesson": 12,
+    "keyword_id": 129,
+    "keyword": "太",
+    "hanzi": "今天太热。",
+    "pinyin": "jīn tiān tài rè",
+    "arabic": "اليوم حار جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 128,
+    "lesson": 12,
+    "keyword_id": 130,
+    "keyword": "太……了",
+    "hanzi": "这件衣服太贵了。",
+    "pinyin": "zhè jiàn yī fu tài guì le",
+    "arabic": "هذه الملابس غالية جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 129,
+    "lesson": 12,
+    "keyword_id": 131,
+    "keyword": "热",
+    "hanzi": "夏天很热。",
+    "pinyin": "xià tiān hěn rè",
+    "arabic": "الصيف حار جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 130,
+    "lesson": 12,
+    "keyword_id": 132,
+    "keyword": "冷",
+    "hanzi": "冬天很冷。",
+    "pinyin": "dōng tiān hěn lěng",
+    "arabic": "الشتاء بارد جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 131,
+    "lesson": 12,
+    "keyword_id": 133,
+    "keyword": "下雨",
+    "hanzi": "今天下午要下雨。",
+    "pinyin": "jīn tiān xià wǔ yào xià yǔ",
+    "arabic": "بعد ظهر اليوم ستمطر.",
+    "type": "sentence"
+  },
+  {
+    "id": 132,
+    "lesson": 12,
+    "keyword_id": 134,
+    "keyword": "下",
+    "hanzi": "昨天下雪了。",
+    "pinyin": "zuó tiān xià xuě le",
+    "arabic": "بالأمس تساقط الثلج.",
+    "type": "sentence"
+  },
+  {
+    "id": 133,
+    "lesson": 12,
+    "keyword_id": 135,
+    "keyword": "雨",
+    "hanzi": "外面雨很大。",
+    "pinyin": "wài miàn yǔ hěn dà",
+    "arabic": "المطر غزير في الخارج.",
+    "type": "sentence"
+  },
+  {
+    "id": 134,
+    "lesson": 12,
+    "keyword_id": 136,
+    "keyword": "小姐",
+    "hanzi": "小姐，你好！",
+    "pinyin": "xiǎo jiě, nǐ hǎo",
+    "arabic": "مرحباً آنسة!",
+    "type": "sentence"
+  },
+  {
+    "id": 135,
+    "lesson": 12,
+    "keyword_id": 137,
+    "keyword": "来",
+    "hanzi": "他明天来我家。",
+    "pinyin": "tā míng tiān lái wǒ jiā",
+    "arabic": "هو سيأتي إلى منزلي غداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 136,
+    "lesson": 12,
+    "keyword_id": 138,
+    "keyword": "身体",
+    "hanzi": "你的身体好吗？",
+    "pinyin": "nǐ de shēn tǐ hǎo ma",
+    "arabic": "هل صحتك جيدة؟",
+    "type": "sentence"
+  },
+  {
+    "id": 137,
+    "lesson": 12,
+    "keyword_id": 139,
+    "keyword": "爱",
+    "hanzi": "我爱我的妈妈。",
+    "pinyin": "wǒ ài wǒ de mā ma",
+    "arabic": "أحب أمي.",
+    "type": "sentence"
+  },
+  {
+    "id": 138,
+    "lesson": 12,
+    "keyword_id": 140,
+    "keyword": "些",
+    "hanzi": "我买了一些苹果。",
+    "pinyin": "wǒ mǎi le yī xiē píng guǒ",
+    "arabic": "اشتريت بعض التفاح.",
+    "type": "sentence"
+  },
+  {
+    "id": 139,
+    "lesson": 12,
+    "keyword_id": 141,
+    "keyword": "水果",
+    "hanzi": "我每天都吃水果。",
+    "pinyin": "wǒ měi tiān dōu chī shuǐ guǒ",
+    "arabic": "أنا آكل الفاكهة كل يوم.",
+    "type": "sentence"
+  },
+  {
+    "id": 140,
+    "lesson": 12,
+    "keyword_id": 142,
+    "keyword": "水",
+    "hanzi": "请给我一杯水。",
+    "pinyin": "qǐng gěi wǒ yī bēi shuǐ",
+    "arabic": "من فضلك أعطني كوب ماء.",
+    "type": "sentence"
+  },
+  {
+    "id": 141,
+    "lesson": 13,
+    "keyword_id": 143,
+    "keyword": "喂",
+    "hanzi": "喂，你好！",
+    "pinyin": "wèi, nǐ hǎo",
+    "arabic": "ألو، مرحباً!",
+    "type": "sentence"
+  },
+  {
+    "id": 142,
+    "lesson": 13,
+    "keyword_id": 144,
+    "keyword": "也",
+    "hanzi": "我也是学生。",
+    "pinyin": "wǒ yě shì xué shēng",
+    "arabic": "أنا أيضاً طالب.",
+    "type": "sentence"
+  },
+  {
+    "id": 143,
+    "lesson": 13,
+    "keyword_id": 145,
+    "keyword": "学习",
+    "hanzi": "我学习汉语。",
+    "pinyin": "wǒ xué xí hàn yǔ",
+    "arabic": "أدرس اللغة الصينية.",
+    "type": "sentence"
+  },
+  {
+    "id": 144,
+    "lesson": 13,
+    "keyword_id": 146,
+    "keyword": "大卫",
+    "hanzi": "大卫是我的朋友。",
+    "pinyin": "dà wèi shì wǒ de péng you",
+    "arabic": "ديفيد صديقي.",
+    "type": "sentence"
+  },
+  {
+    "id": 145,
+    "lesson": 13,
+    "keyword_id": 147,
+    "keyword": "上午",
+    "hanzi": "我上午去学校。",
+    "pinyin": "wǒ shàng wǔ qù xué xiào",
+    "arabic": "صباحاً أذهب إلى المدرسة.",
+    "type": "sentence"
+  },
+  {
+    "id": 146,
+    "lesson": 13,
+    "keyword_id": 148,
+    "keyword": "睡觉",
+    "hanzi": "孩子在睡觉。",
+    "pinyin": "hái zi zài shuì jiào",
+    "arabic": "الطفل نائم.",
+    "type": "sentence"
+  },
+  {
+    "id": 147,
+    "lesson": 13,
+    "keyword_id": 149,
+    "keyword": "电视",
+    "hanzi": "我在看电视。",
+    "pinyin": "wǒ zài kàn diàn shì",
+    "arabic": "أنا أشاهد التلفاز.",
+    "type": "sentence"
+  },
+  {
+    "id": 148,
+    "lesson": 13,
+    "keyword_id": 150,
+    "keyword": "喜欢",
+    "hanzi": "我喜欢喝茶。",
+    "pinyin": "wǒ xǐ huān hē chá",
+    "arabic": "أحب شرب الشاي.",
+    "type": "sentence"
+  },
+  {
+    "id": 149,
+    "lesson": 13,
+    "keyword_id": 151,
+    "keyword": "给",
+    "hanzi": "我给你一本书。",
+    "pinyin": "wǒ gěi nǐ yī běn shū",
+    "arabic": "أعطيك كتاباً.",
+    "type": "sentence"
+  },
+  {
+    "id": 150,
+    "lesson": 13,
+    "keyword_id": 152,
+    "keyword": "打电话",
+    "hanzi": "我给妈妈打电话。",
+    "pinyin": "wǒ gěi mā mā dǎ diàn huà",
+    "arabic": "أنا أتصل بأمي.",
+    "type": "sentence"
+  },
+  {
+    "id": 151,
+    "lesson": 13,
+    "keyword_id": 153,
+    "keyword": "吧",
+    "hanzi": "我们去吃饭吧。",
+    "pinyin": "wǒ men qù chī fàn ba",
+    "arabic": "لنذهب لنأكل.",
+    "type": "sentence"
+  },
+  {
+    "id": 152,
+    "lesson": 14,
+    "keyword_id": 154,
+    "keyword": "东西",
+    "hanzi": "这是什么东西？",
+    "pinyin": "zhè shì shén me dōng xī",
+    "arabic": "ما هذا الشيء؟",
+    "type": "sentence"
+  },
+  {
+    "id": 153,
+    "lesson": 14,
+    "keyword_id": 155,
+    "keyword": "一点儿",
+    "hanzi": "给我一点儿水。",
+    "pinyin": "gěi wǒ yī diǎnr shuǐ",
+    "arabic": "أعطني قليلاً من الماء.",
+    "type": "sentence"
+  },
+  {
+    "id": 154,
+    "lesson": 14,
+    "keyword_id": 156,
+    "keyword": "苹果",
+    "hanzi": "我喜欢吃苹果。",
+    "pinyin": "wǒ xǐ huān chī píng guǒ",
+    "arabic": "أحب أكل التفاح.",
+    "type": "sentence"
+  },
+  {
+    "id": 155,
+    "lesson": 14,
+    "keyword_id": 157,
+    "keyword": "看见",
+    "hanzi": "我看见老师。",
+    "pinyin": "wǒ kàn jiàn lǎo shī",
+    "arabic": "أرى المعلم.",
+    "type": "sentence"
+  },
+  {
+    "id": 156,
+    "lesson": 14,
+    "keyword_id": 158,
+    "keyword": "先生",
+    "hanzi": "王先生，你好！",
+    "pinyin": "wáng xiān sheng, nǐ hǎo",
+    "arabic": "سيد وانغ، مرحباً!",
+    "type": "sentence"
+  },
+  {
+    "id": 157,
+    "lesson": 14,
+    "keyword_id": 159,
+    "keyword": "开",
+    "hanzi": "他会开车。",
+    "pinyin": "tā huì kāi chē",
+    "arabic": "هو يستطيع قيادة السيارة.",
+    "type": "sentence"
+  },
+  {
+    "id": 158,
+    "lesson": 14,
+    "keyword_id": 160,
+    "keyword": "车",
+    "hanzi": "这是一辆车。",
+    "pinyin": "zhè shì yī liàng chē",
+    "arabic": "هذه سيارة.",
+    "type": "sentence"
+  },
+  {
+    "id": 159,
+    "lesson": 14,
+    "keyword_id": 161,
+    "keyword": "回来",
+    "hanzi": "爸爸六点回来。",
+    "pinyin": "bà ba liù diǎn huí lái",
+    "arabic": "أبي يعود الساعة السادسة.",
+    "type": "sentence"
+  },
+  {
+    "id": 160,
+    "lesson": 14,
+    "keyword_id": 162,
+    "keyword": "分钟",
+    "hanzi": "等我五分钟。",
+    "pinyin": "děng wǒ wǔ fēn zhōng",
+    "arabic": "انتظرني خمس دقائق.",
+    "type": "sentence"
+  },
+  {
+    "id": 161,
+    "lesson": 14,
+    "keyword_id": 163,
+    "keyword": "后",
+    "hanzi": "下班后我去商店。",
+    "pinyin": "xià bān hòu wǒ qù shāng diàn",
+    "arabic": "بعد انتهاء العمل أذهب إلى المتجر.",
+    "type": "sentence"
+  },
+  {
+    "id": 162,
+    "lesson": 14,
+    "keyword_id": 164,
+    "keyword": "张",
+    "hanzi": "我有一张纸。",
+    "pinyin": "wǒ yǒu yī zhāng zhǐ",
+    "arabic": "لدي ورقة.",
+    "type": "sentence"
+  },
+  {
+    "id": 163,
+    "lesson": 14,
+    "keyword_id": 165,
+    "keyword": "衣服",
+    "hanzi": "你的衣服很漂亮。",
+    "pinyin": "nǐ de yī fu hěn piào liang",
+    "arabic": "ملابسك جميلة جداً.",
+    "type": "sentence"
+  },
+  {
+    "id": 164,
+    "lesson": 14,
+    "keyword_id": 166,
+    "keyword": "漂亮",
+    "hanzi": "她是一个漂亮的女孩。",
+    "pinyin": "tā shì yī gè piào liang de nǚ hái",
+    "arabic": "هي فتاة جميلة.",
+    "type": "sentence"
+  },
+  {
+    "id": 165,
+    "lesson": 14,
+    "keyword_id": 167,
+    "keyword": "啊",
+    "hanzi": "今天天气真好啊！",
+    "pinyin": "jīn tiān tiān qì zhēn hǎo a",
+    "arabic": "يا له من طقس جميل اليوم!",
+    "type": "sentence"
+  },
+  {
+    "id": 166,
+    "lesson": 14,
+    "keyword_id": 168,
+    "keyword": "少",
+    "hanzi": "我的钱很少。",
+    "pinyin": "wǒ de qián hěn shǎo",
+    "arabic": "مالي قليل.",
+    "type": "sentence"
+  },
+  {
+    "id": 167,
+    "lesson": 14,
+    "keyword_id": 169,
+    "keyword": "不少",
+    "hanzi": "他买了不少书。",
+    "pinyin": "tā mǎi le bù shǎo shū",
+    "arabic": "هو اشترى كتباً ليست بقليلة.",
+    "type": "sentence"
+  },
+  {
+    "id": 168,
+    "lesson": 14,
+    "keyword_id": 170,
+    "keyword": "这些",
+    "hanzi": "这些书是我的。",
+    "pinyin": "zhè xiē shū shì wǒ de",
+    "arabic": "هذه الكتب لي.",
+    "type": "sentence"
+  },
+  {
+    "id": 169,
+    "lesson": 14,
+    "keyword_id": 171,
+    "keyword": "都",
+    "hanzi": "我们都是埃及人。",
+    "pinyin": "wǒ men dōu shì āi jí rén",
+    "arabic": "نحن جميعاً مصريون.",
+    "type": "sentence"
+  },
+  {
+    "id": 170,
+    "lesson": 15,
+    "keyword_id": 172,
+    "keyword": "认识",
+    "hanzi": "我认识他。",
+    "pinyin": "wǒ rèn shì tā",
+    "arabic": "أنا أعرفه.",
+    "type": "sentence"
+  },
+  {
+    "id": 171,
+    "lesson": 15,
+    "keyword_id": 173,
+    "keyword": "年",
+    "hanzi": "今年是二〇二五年。",
+    "pinyin": "jīn nián shì èr líng èr wǔ nián",
+    "arabic": "هذا العام هو 2025.",
+    "type": "sentence"
+  },
+  {
+    "id": 172,
+    "lesson": 15,
+    "keyword_id": 174,
+    "keyword": "大学",
+    "hanzi": "我在开罗大学学习汉语。",
+    "pinyin": "wǒ zài kāi luó dà xué xué xí hàn yǔ",
+    "arabic": "أدرس اللغة الصينية في جامعة القاهرة.",
+    "type": "sentence"
+  },
+  {
+    "id": 173,
+    "lesson": 15,
+    "keyword_id": 175,
+    "keyword": "饭店",
+    "hanzi": "我们去饭店吃饭。",
+    "pinyin": "wǒ men qù fàn diàn chī fàn",
+    "arabic": "نذهب إلى المطعم لنأكل.",
+    "type": "sentence"
+  },
+  {
+    "id": 174,
+    "lesson": 15,
+    "keyword_id": 176,
+    "keyword": "出租车",
+    "hanzi": "他坐出租车去学校。",
+    "pinyin": "tā zuò chū zū chē qù xué xiào",
+    "arabic": "يذهب إلى المدرسة بسيارة الأجرة.",
+    "type": "sentence"
+  },
+  {
+    "id": 175,
+    "lesson": 15,
+    "keyword_id": 177,
+    "keyword": "一起",
+    "hanzi": "我们一起学习吧。",
+    "pinyin": "wǒ men yī qǐ xué xí ba",
+    "arabic": "لنتعلم معاً.",
+    "type": "sentence"
+  },
+  {
+    "id": 176,
+    "lesson": 15,
+    "keyword_id": 178,
+    "keyword": "高兴",
+    "hanzi": "见到你很高兴。",
+    "pinyin": "jiàn dào nǐ hěn gāo xìng",
+    "arabic": "أنا سعيد جداً برؤيتك.",
+    "type": "sentence"
+  },
+  {
+    "id": 177,
+    "lesson": 15,
+    "keyword_id": 179,
+    "keyword": "听",
+    "hanzi": "我喜欢听音乐。",
+    "pinyin": "wǒ xǐ huān tīng yīn yuè",
+    "arabic": "أحب الاستماع إلى الموسيقى.",
+    "type": "sentence"
+  },
+  {
+    "id": 178,
+    "lesson": 15,
+    "keyword_id": 180,
+    "keyword": "飞机",
+    "hanzi": "飞机到了。",
+    "pinyin": "fēi jī dào le",
+    "arabic": "وصلت الطائرة.",
+    "type": "sentence"
+  }
+]
