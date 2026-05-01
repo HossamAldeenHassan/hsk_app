@@ -304,9 +304,34 @@
     transform-style: preserve-3d;
     box-shadow: var(--shadow);
     user-select: none;
+    perspective: 1000px;
   }
   .flashcard:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.6); }
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform .6s;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
   .flashcard.flipped { transform: rotateY(180deg); }
+  .flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+  flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+}
   .card-face {
     position: absolute;
     width: 100%; height: 100%;
