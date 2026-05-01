@@ -1052,9 +1052,9 @@ async function init() {
 
   try {
     const [v, s, d] = await Promise.all([
-      fetch('data/vocab.json').then(r => r.json()),
-      fetch('data/sentences.json').then(r => r.json()),
-      fetch('data/dialogues.json').then(r => r.json()),
+      fetch('./data/vocab.json').then(r => r.json()),
+      fetch('./data/sentences.json').then(r => r.json()),
+      fetch('./data/dialogues.json').then(r => r.json()),
     ]);
     allVocab = v;
     allSentences = s;
