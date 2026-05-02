@@ -432,13 +432,14 @@
       </div>
     </div>
 
+    <!-- Dictation UI: unique input id to avoid conflict -->
     <div id="dictationWrap" style="display:none">
       <div style="margin:12px 0; text-align:center;">
         <button class="btn btn-secondary btn-sm" onclick="speakItem()">🔊 إعادة التشغيل</button>
       </div>
       <div class="quiz-input-wrap">
-        <input class="quiz-input" id="quizInput" type="text" placeholder="اكتب ما تسمعه" autocomplete="off" autocorrect="off" dir="ltr">
-        <button class="btn btn-primary" onclick="submitTypeAnswer()">تحقق</button>
+        <input class="quiz-input" id="dictationInput" type="text" placeholder="اكتب ما تسمعه" autocomplete="off" autocorrect="off" dir="ltr">
+        <button class="btn btn-primary" onclick="submitDictationAnswer()">تحقق</button>
       </div>
     </div>
 
@@ -454,7 +455,7 @@
     <div id="feedbackWrap" style="display:none"></div>
 
     <div style="text-align:center;margin-top:8px;">
-      <button class="btn btn-primary btn-lg" id="nextQuizBtn" style="display:none" onclick="nextQuiz()">التالي ←</button>
+      <button class="btn btn-primary btn-lg" id="nextQuizBtn" style="display:none" onclick="handleNext()">التالي ←</button>
     </div>
     <div style="text-align:center;margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="endSession()">إنهاء الجلسة</button></div>
   </div>
@@ -528,7 +529,6 @@ let session = {
   tfCorrectAnswer: null,
   buildWords: [],
   builtOrder: [],
-  // tone specific
   toneItems: [],
   toneIndex: 0,
   currentWordChars: [],
@@ -565,15 +565,19 @@ async function init() {
     updateCount();
   };
   document.getElementById('quizInput').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !session.answered) submitTypeAnswer();
-    else if (e.key === 'Enter' && session.answered) nextQuiz();
+    if (e.key === 'Enter' && !session.answered && session.mode !== 'quiz_tone') submitTypeAnswer();
+    else if (e.key === 'Enter' && session.answered && session.mode !== 'quiz_tone') handleNext();
+  });
+  document.getElementById('dictationInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !session.answered) submitDictationAnswer();
+    else if (e.key === 'Enter' && session.answered) handleNext();
   });
 
   try {
     const [v, s, d] = await Promise.all([
-      fetch('./data/vocab.json').then(r=>r.json()),
-      fetch('./data/sentences.json').then(r=>r.json()),
-      fetch('./data/dialogues.json').then(r=>r.json()),
+      fetch('/data/vocab.json').then(r=>r.json()),
+      fetch('/data/sentences.json').then(r=>r.json()),
+      fetch('/data/dialogues.json').then(r=>r.json()),
     ]);
     allVocab = v; allSentences = s; allDialogues = d;
     for (const word of allVocab) {
@@ -713,11 +717,9 @@ function startReview(filter) {
   }
   if (!items.length) { showToast('لا توجد عناصر مطابقة'); return; }
   items = shuffle(items);
-  session = {
-    items, index:0, mode: currentMode, mistakes:[], correct:0, wrong:0, flipped:false, answered:false, tfCorrectAnswer:null, buildWords:[], builtOrder:[],
-    toneItems: [], toneIndex: 0, currentWordChars: [], currentCharIndex: 0
-  };
+  resetSessionState(items, currentMode);
   if (currentMode === 'flashcard') startFlashcards();
+  else if (currentMode === 'quiz_tone') prepareToneSession();
   else startQuiz();
 }
 
@@ -752,6 +754,26 @@ function renderLessonCompletion() {
   document.getElementById('lessonCompletion').innerHTML = html || '<div class="empty-state">لا توجد بيانات</div>';
 }
 
+function resetSessionState(items, mode) {
+  session = {
+    items: items,
+    index: 0,
+    mode: mode,
+    mistakes: [],
+    correct: 0,
+    wrong: 0,
+    flipped: false,
+    answered: false,
+    tfCorrectAnswer: null,
+    buildWords: [],
+    builtOrder: [],
+    toneItems: [],
+    toneIndex: 0,
+    currentWordChars: [],
+    currentCharIndex: 0,
+  };
+}
+
 function startSession(retryItems) {
   let items = Array.isArray(retryItems) ? retryItems : getFilteredItems();
   if (!items.length) { showToast('لا توجد بطاقات مطابقة!'); return; }
@@ -760,10 +782,7 @@ function startSession(retryItems) {
   if (order === 'random') items = shuffle(items);
   if (countVal !== 'all') items = items.slice(0, +countVal);
 
-  session = {
-    items, index:0, mode: currentMode, mistakes:[], correct:0, wrong:0, flipped:false, answered:false, tfCorrectAnswer:null, buildWords:[], builtOrder:[],
-    toneItems: [], toneIndex: 0, currentWordChars: [], currentCharIndex: 0
-  };
+  resetSessionState(items, currentMode);
 
   if (currentMode === 'flashcard') startFlashcards();
   else if (currentMode === 'quiz_tone') prepareToneSession();
@@ -866,26 +885,31 @@ function renderToneQuiz() {
     endSession();
     return;
   }
+  // validate item
+  const word = session.toneItems[idx];
+  if (!word || !word.hanzi || !word.pinyin) {
+    console.warn('Skipping invalid tone item', word);
+    session.toneIndex++;
+    renderToneQuiz();
+    return;
+  }
   document.getElementById('quizProgress').textContent = `${idx+1} / ${total}`;
   document.getElementById('quizProgressBar').style.width = `${((idx+1)/total)*100}%`;
   ['typeAnswerWrap','mcWrap','tfWrap','buildWrap','dictationWrap','toneWrap'].forEach(id=>document.getElementById(id).style.display='none');
   document.getElementById('feedbackWrap').style.display='none';
   document.getElementById('nextQuizBtn').style.display='none';
+  document.getElementById('toneWrap').style.display = '';
 
-  const word = session.toneItems[idx];
-  // For simplicity always use whole word (if multi-char, step through chars)
   session.currentWordChars = [...word.hanzi];
   session.currentCharIndex = 0;
   session.answered = false;
 
-  document.getElementById('toneWrap').style.display = '';
   displayCurrentChar();
 }
 
 function displayCurrentChar() {
   const word = session.toneItems[session.toneIndex];
   const char = session.currentWordChars[session.currentCharIndex];
-  const tone = word.tones[session.currentCharIndex];
   document.getElementById('toneCharDisplay').textContent = char;
   const choicesDiv = document.getElementById('toneChoices');
   const tones = [
@@ -903,7 +927,6 @@ function submitToneAnswer(chosenTone) {
   const word = session.toneItems[session.toneIndex];
   const expected = word.tones[session.currentCharIndex];
   const isCorrect = chosenTone === expected;
-  // disable buttons and highlight
   document.querySelectorAll('#toneChoices .quiz-choice').forEach(btn => {
     btn.disabled = true;
     const val = parseInt(btn.textContent.match(/\d/)?.[0]);
@@ -916,18 +939,19 @@ function submitToneAnswer(chosenTone) {
   document.getElementById('nextQuizBtn').style.display = '';
 }
 
-function nextQuiz() {
+function advanceTone() {
   const word = session.toneItems[session.toneIndex];
   session.answered = false;
-  // advance to next character or next word
+  // next character or next word
   if (session.currentCharIndex < session.currentWordChars.length - 1) {
     session.currentCharIndex++;
-    displayCurrentChar();
     // reset UI
     document.getElementById('feedbackWrap').style.display = 'none';
     document.getElementById('nextQuizBtn').style.display = 'none';
     document.querySelectorAll('#toneChoices .quiz-choice').forEach(btn => btn.disabled = false);
+    displayCurrentChar();
   } else {
+    // move to next word
     session.toneIndex++;
     if (session.toneIndex < session.toneItems.length) {
       renderToneQuiz();
@@ -937,6 +961,33 @@ function nextQuiz() {
   }
 }
 
+// ────────────────────────────
+// DICTATION MODE FIX
+// ────────────────────────────
+function submitDictationAnswer() {
+  const item = session.items[session.index];
+  const inp = document.getElementById('dictationInput');
+  const userRaw = inp.value.trim();
+  if (!userRaw) return;
+  const correct = normChinese(userRaw) === normChinese(item.hanzi);
+  inp.disabled = true;
+  inp.className = 'quiz-input ' + (correct ? 'correct' : 'wrong');
+  showFeedback(correct, item, userRaw);
+  recordAnswer(correct, item, userRaw);
+  document.getElementById('nextQuizBtn').style.display = '';
+}
+
+function handleNext() {
+  if (session.mode === 'quiz_tone') {
+    advanceTone();
+  } else {
+    nextQuiz();
+  }
+}
+
+// ────────────────────────────
+// GENERAL QUIZ FUNCTIONS
+// ────────────────────────────
 function startQuiz() {
   showView('quizView');
   const labels = {
@@ -983,7 +1034,7 @@ function renderQuiz() {
 function renderDictation(item, qCard) {
   qCard.innerHTML = `<div class="quiz-type-label">اكتب ما تسمع</div>`;
   document.getElementById('dictationWrap').style.display='';
-  const inp = document.getElementById('quizInput');
+  const inp = document.getElementById('dictationInput');
   inp.value = ''; inp.className = 'quiz-input'; inp.disabled = false;
   inp.setAttribute('dir','ltr');
   inp.focus();
@@ -996,7 +1047,7 @@ function submitTypeAnswer() {
   const userRaw = inp.value.trim();
   if (!userRaw) return;
   let correct;
-  if (session.mode === 'quiz_ar_zh' || session.mode === 'quiz_dictation') {
+  if (session.mode === 'quiz_ar_zh') {
     correct = normChinese(userRaw) === normChinese(item.hanzi);
   } else {
     correct = compareArabic(userRaw, item.arabic);
